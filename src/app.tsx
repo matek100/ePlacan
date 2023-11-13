@@ -35,9 +35,9 @@ export function App() {
         </div>
       </Router>
 
-      <div id="up-btn">
+      <button id="up-btn">
         To the top
-      </div>
+      </button>
 
     </div>
   )
