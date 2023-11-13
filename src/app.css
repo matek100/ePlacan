@@ -1,0 +1,25 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.nav-btn {
+    display: block;
+}
+
+#up-btn {
+    position: absolute;
+    bottom: 0;
+}
