@@ -1,17 +1,12 @@
 import { useState } from "preact/hooks"
+import PayTable from "../components/PayTable";
+import { Data } from "../type";
 import "./eplacan.css";
+import PayForm from "../components/PayForm";
 
 export default function EPlacan(
     { path }: { path: string }
 ) {
-
-    type Data = {
-        ip: number,
-        job: string,
-        school: string,
-        hours: number,
-        pay: number
-    }
 
     const fakeData: Data[] = [
         {
@@ -67,57 +62,12 @@ export default function EPlacan(
                 onClick={() => setFormOpen(!formOpen)}>
                 Želim deliti svoje stanje!
             </button> :
-            <form id="form">
-                <label class={"form-input"}>
-                    <span>Naziv poklica:</span>
-                    <input type={"text"}></input>
-                </label>
-                <label class={"form-input"}>
-                    <span>Povprečje ur na teden:</span>
-                    <input type={"number"}></input>
-                </label>
-                <label class={"form-input"}>
-                    <span>Mesečni prihodek:</span>
-                    <input type={"number"}></input>
-                </label>
-                <label class={"form-input"}>
-                    <span>Dosežena izobrazba:</span>
-                    <select>
-                        <option></option>
-                        <option>Option One</option>
-                        <option>Option Two</option>
-                    </select>
-                </label>
-            </form>}
+            <PayForm />}
         <button
             id="filters"
             onClick={() => setFilterOpen(!filterOpen)}>
             Filtriraj
         </button>
-        <div id="results">
-            <table>
-                <thead>
-                    <tr>
-                        <td>Plačilo</td>
-                        <td>Ure</td>
-                        <td>Izobrazba</td>
-                        <td>Plača</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {fakeData.map(
-                        (info, index) => {
-                            return (
-                                <tr>
-                                    <td>{info.job}</td>
-                                    <td>{info.hours}</td>
-                                    <td>{info.school}</td>
-                                    <td>{info.pay}</td>
-                                </tr>
-                            )
-                        })}
-                </tbody>
-            </table>
-        </div>
+        <PayTable data={fakeData} />
     </>)
 }

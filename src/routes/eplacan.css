@@ -6,3 +6,42 @@
 .form-input {
     display: flex;
 }
+
+table {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+}
+
+caption {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 5px auto 10px;
+}
+
+th {
+    text-align: left;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+}
+
+th:nth-of-type(2) {
+    text-align: center;
+}
+
+th:last-of-type {
+    text-align: right;
+}
+
+td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 6px 20px 10px;
+}
+
+td:nth-of-type(2) {
+    text-align: center;
+}
+
+td:last-of-type {
+    text-align: right;
+}
