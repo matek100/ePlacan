@@ -1,11 +1,42 @@
+/*FORMA ZA ODDAJO INFORMACIJE O ZAPOSLITVI*/
+
 #form {
-    display: flex;
-    flex-direction: column;
+    margin: 15px;
 }
 
-.form-input {
-    display: flex;
+.form-input span {
+    margin: 5px 10px;
 }
+
+.form-input-field {
+    flex-grow: 1;
+    text-align: center;
+    border: 0px;
+    border-bottom: 2px solid black;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+
+#select-box {
+    flex-grow: 1;
+}
+
+.options {
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+}
+
+select {
+    display: none;
+}
+
+option {
+    display: none;
+    color: black;
+}
+
+/*TABELA REZULTATOV*/
 
 table {
     width: 100%;

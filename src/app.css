@@ -23,3 +23,34 @@
     position: absolute;
     bottom: 10px;
 }
+
+/*GENERIC CSS TYPES*/
+
+.defMouse {
+    cursor: default;
+}
+
+.actMouse {
+    cursor: pointer;
+}
+
+.block {
+    display: block;
+}
+
+.inBlock {
+    display: inline-block;
+}
+
+.flex {
+    display: flex;
+}
+
+.inFlex {
+    display: inline-flex;
+}
+
+.colFlex {
+    display: flex;
+    flex-direction: column;
+}
