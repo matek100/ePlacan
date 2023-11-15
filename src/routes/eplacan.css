@@ -17,23 +17,30 @@
     outline: none;
 }
 
-#select-box {
+.select-box {
+    position: relative;
     flex-grow: 1;
+    height: 30px;
 }
 
-.options {
+.selector {
+    display: flex;
+    justify-content: right;
+    align-items: center;
     height: 100%;
-    width: 100%;
     background-color: blue;
 }
 
-select {
-    /* display: none; */
+#arrowUp {
+    height: 65%;
+    margin-right: 5px;
 }
 
-option {
-    /* display: none; */
+.selection {
+    position: absolute;
+    width: 100%;
     color: black;
+    background-color: beige;
 }
 
 /*TABELA REZULTATOV*/

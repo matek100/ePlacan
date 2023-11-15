@@ -1,29 +1,14 @@
-import { useEffect } from "preact/hooks"
+import SelectRadio from "../utils/SelectRadio"
 
 export default function PayForm() {
 
-    useEffect(() => {
-        //createSelection();
-    }, [])
-
-    const createSelection = () => {
-        const sel = document.getElementsByTagName("select")[0];
-        const opts = sel.options;
-        const optsl = opts.length;
-
-        const newOpts = document.createElement("div");
-        newOpts.setAttribute("class", "options");
-        newOpts.innerHTML = sel.options[sel.selectedIndex].innerHTML;
-
-        const newOpt = document.createElement("div");
-        newOpt.setAttribute("class", "option");
-
-        document.getElementById("select-box")?.append(newOpts);
-
-        for (let i = 0; i < optsl; i++) {
-            newOpts.append(newOpt);
-        }
-    }
+    const schoolTier = [
+        "1. bolonska",
+        "2. bolonska",
+        "3. bolonska",
+        "4. bolonska",
+        "5. bolonska"
+    ]
 
     return (
         <form id="form colFlex">
@@ -45,13 +30,7 @@ export default function PayForm() {
 
             <label class={"form-input flex"}>
                 <span>Dosežena izobrazba :</span>
-                <div id="select-box">
-                    <select name="school-input" class={"form-input-field"} required>
-                        <option value="">-- Klikni in izberi --</option>
-                        <option value="option-one">Option One</option>
-                        <option value="option-two">Option Two</option>
-                    </select>
-                </div>
+                <SelectRadio name="school" selection={schoolTier} />
             </label>
 
         </form>
