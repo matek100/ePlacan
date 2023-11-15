@@ -3,11 +3,9 @@ import { useEffect } from "preact/hooks"
 export default function PayForm() {
 
     useEffect(() => {
-        createSelection();
+        //createSelection();
     }, [])
 
-
-    /* WORK IN PROGRESS, POSKUŠAM IZBOLJŠATI SELECTION, VENDAR JE POTREBNO VSE NA ROKE, KER CSS NE DELUJE */
     const createSelection = () => {
         const sel = document.getElementsByTagName("select")[0];
         const opts = sel.options;

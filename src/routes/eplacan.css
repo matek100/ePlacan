@@ -28,11 +28,11 @@
 }
 
 select {
-    display: none;
+    /* display: none; */
 }
 
 option {
-    display: none;
+    /* display: none; */
     color: black;
 }
 
