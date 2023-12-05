@@ -15,7 +15,7 @@ export default function PayForm(
         "5. bolonska"
     ]
 
-    return open ? (
+    return open ? (<>
         <form id="form colFlex">
 
             <label class={"form-input flex"}>
@@ -40,28 +40,32 @@ export default function PayForm(
 
             <label class={"form-input flex"}>
                 <span>Dosežena izobrazba :</span>
-                <SelectRadio name="school" selection={schoolTier} />
+                <SelectRadio
+                    name="school"
+                    describe="Izberi izobrazbo"
+                    selection={schoolTier}
+                />
             </label>
 
-            <div id="formBtnBox">
-                <button
-                    onClick={() => setOpen(false)}>
-                    Prekliči
-                </button>
-                <button
-                    onClick={() => setOpen(false)}>
-                    Izprazni
-                </button>
-                <button
-                    onClick={() => setOpen(false)}>
-                    Deli
-                </button>
-            </div>
-
         </form>
+
+        <div id="formBtnBox">
+            <button
+                onClick={() => setOpen(false)}>
+                Prekliči
+            </button>
+            <button
+                onClick={() => setOpen(false)}>
+                Izprazni
+            </button>
+            <button
+                onClick={() => setOpen(false)}>
+                Deli
+            </button>
+        </div>
+    </>
     ) :
         <button
-            id="openFormBtn"
             onClick={() => setOpen(true)}>
             Želim deliti svoje stanje!
         </button>

@@ -1,10 +1,11 @@
 export default function ArrowUp(
-  { up }: { up: boolean }
+  { id, up }: { id: string, up: boolean }
 ) {
 
   return (<>
     <svg
-      id="arrowUp"
+      id={id}
+      class="arrowUp"
       style={{
         rotate: up ? "0deg" : "180deg",
       }}

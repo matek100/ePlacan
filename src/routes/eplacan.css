@@ -29,19 +29,29 @@
 
 .selector {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     height: 100%;
-    background-color: blue;
+    border-bottom: 2px solid black;
 }
 
-#arrowUp {
-    height: 65%;
+.selector:hover {
+    border-bottom: 3px solid black;
+}
+
+#schoolArrow {
+    position: absolute;
+    right: 0;
+}
+
+.arrowUp {
+    height: 60%;
     margin-right: 5px;
 }
 
 .selection {
     position: absolute;
+    top: 100%;
     width: 100%;
     color: black;
     background-color: beige;
