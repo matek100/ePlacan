@@ -1,23 +1,27 @@
 import { Data } from "../type"
 
 export default function PayTable(
-    { data }: { data: Data[] }
+    { data, formOpen, setFilterOpen }: {
+        data: Data[],
+        formOpen: boolean,
+        setFilterOpen(newState: boolean): void
+    }
 ) {
-    return (
+    return !formOpen ? (<>
         <table id="results">
             <caption>Seznam deljenih plačnih razmerij</caption>
             <thead id="table-head">
                 <tr>
-                    <th>Plačilo</th>
-                    <th>Ure</th>
-                    <th>Izobrazba</th>
-                    <th>Leta</th>
-                    <th>Plača</th>
+                    <th onClick={() => setFilterOpen(true)}>Plačilo</th>
+                    <th onClick={() => setFilterOpen(true)}>Ure</th>
+                    <th onClick={() => setFilterOpen(true)}>Izobrazba</th>
+                    <th onClick={() => setFilterOpen(true)}>Leta</th>
+                    <th onClick={() => setFilterOpen(true)}>Plača</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map(
-                    (info, index) => {
+                    (info) => {
                         return (
                             <tr>
                                 <td>{info.job}</td>
@@ -30,5 +34,9 @@ export default function PayTable(
                     })}
             </tbody>
         </table>
-    )
+
+        <button id="up-btn">
+            To the top
+        </button>
+    </>) : <></>
 }

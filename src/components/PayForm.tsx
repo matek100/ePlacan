@@ -1,6 +1,11 @@
 import SelectRadio from "../utils/SelectRadio"
 
-export default function PayForm() {
+export default function PayForm(
+    { open, setOpen }: {
+        open: boolean,
+        setOpen(newState: boolean): void
+    }
+) {
 
     const schoolTier = [
         "1. bolonska",
@@ -10,7 +15,7 @@ export default function PayForm() {
         "5. bolonska"
     ]
 
-    return (
+    return open ? (
         <form id="form colFlex">
 
             <label class={"form-input flex"}>
@@ -29,10 +34,35 @@ export default function PayForm() {
             </label>
 
             <label class={"form-input flex"}>
+                <span>Leta izkušenj :</span>
+                <input name="years-input" type={"number"} class={"form-input-field"} required></input>
+            </label>
+
+            <label class={"form-input flex"}>
                 <span>Dosežena izobrazba :</span>
                 <SelectRadio name="school" selection={schoolTier} />
             </label>
 
+            <div id="formBtnBox">
+                <button
+                    onClick={() => setOpen(false)}>
+                    Prekliči
+                </button>
+                <button
+                    onClick={() => setOpen(false)}>
+                    Izprazni
+                </button>
+                <button
+                    onClick={() => setOpen(false)}>
+                    Deli
+                </button>
+            </div>
+
         </form>
-    )
+    ) :
+        <button
+            id="openFormBtn"
+            onClick={() => setOpen(true)}>
+            Želim deliti svoje stanje!
+        </button>
 }

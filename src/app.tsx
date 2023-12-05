@@ -15,30 +15,32 @@ export function App() {
 
   return (
     <div id="app">
+      <div class={"container"}>
 
-      <nav id="nav">
-        <h1>{path.name}</h1>
-        <Link
-          class={"nav-btn"}
-          href={path.to}
-          onClick={() => handlePathChange()}>
-          {path.nameTo}
-        </Link>
-      </nav>
+        <nav id="nav">
+          <h1>{path.name}</h1>
+          <Link
+            class={"nav-btn"}
+            href={path.to}
+            onClick={() => handlePathChange()}>
+            {path.nameTo}
+          </Link>
+        </nav>
 
-      <Router>
-        <EPlacan path="/" />
-        <ONas path="/piratska-stranka" />
-        <div default>
-          <h3>Ta stran ne obstaja.</h3>
-          <p>Poskusite "/" ali "/piratska-stranka"</p>
-        </div>
-      </Router>
+        <Router>
 
-      <button id="up-btn">
-        To the top
-      </button>
+          <EPlacan path="/" />
 
+          <ONas path="/piratska-stranka" />
+
+          <div default>
+            <h3>Ta stran ne obstaja.</h3>
+            <p>Poskusite "/" ali "/piratska-stranka"</p>
+          </div>
+
+        </Router>
+
+      </div>
     </div>
   )
 }

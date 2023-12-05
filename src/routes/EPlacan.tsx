@@ -1,8 +1,9 @@
 import { useState } from "preact/hooks"
-import PayTable from "../components/PayTable";
 import { Data } from "../type";
-import "./eplacan.css";
 import PayForm from "../components/PayForm";
+import PayFilter from "../components/PayFilter";
+import PayTable from "../components/PayTable";
+import "./eplacan.css";
 
 export default function EPlacan(
     { path }: { path: string }
@@ -63,17 +64,22 @@ export default function EPlacan(
     const [filterOpen, setFilterOpen] = useState(false);
 
     return (<>
-        {!formOpen ?
-            <button
-                onClick={() => setFormOpen(!formOpen)}>
-                Želim deliti svoje stanje!
-            </button> :
-            <PayForm />}
-        <button
-            id="filters"
-            onClick={() => setFilterOpen(!filterOpen)}>
-            Filtriraj
-        </button>
-        <PayTable data={fakeData} />
+
+        <PayForm
+            open={formOpen}
+            setOpen={setFormOpen}
+        />
+
+        <PayTable
+            data={fakeData}
+            formOpen={formOpen}
+            setFilterOpen={setFilterOpen}
+        />
+
+        <PayFilter
+            filterOpen={filterOpen}
+            setFilterOpen={setFilterOpen}
+        />
+
     </>)
 }

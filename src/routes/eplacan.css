@@ -1,4 +1,8 @@
-/*FORMA ZA ODDAJO INFORMACIJE O ZAPOSLITVI*/
+/*ODDAJA INFO O ZAPOSLITVI*/
+
+#openFormBtn {
+    margin-bottom: 5px;
+}
 
 #form {
     margin: 15px;
@@ -41,6 +45,48 @@
     width: 100%;
     color: black;
     background-color: beige;
+}
+
+#formBtnBox {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/*FILTER REZULETATOV*/
+
+#filterPosition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#filterBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 250px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    pointer-events: auto;
+}
+
+.exitBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: black;
 }
 
 /*TABELA REZULTATOV*/
