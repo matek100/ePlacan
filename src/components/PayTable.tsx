@@ -11,6 +11,7 @@ export default function PayTable(
                     <th>Plačilo</th>
                     <th>Ure</th>
                     <th>Izobrazba</th>
+                    <th>Leta</th>
                     <th>Plača</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@ export default function PayTable(
                                 <td>{info.job}</td>
                                 <td>{info.hours}</td>
                                 <td>{info.school}</td>
+                                <td>{info.years}</td>
                                 <td>{info.pay}</td>
                             </tr>
                         )

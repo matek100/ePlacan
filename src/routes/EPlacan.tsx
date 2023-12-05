@@ -13,6 +13,7 @@ export default function EPlacan(
             ip: 1,
             job: "Scientist",
             school: "UNI Bio",
+            years: 3,
             hours: 40,
             pay: 40000
         },
@@ -20,6 +21,7 @@ export default function EPlacan(
             ip: 2,
             job: "Plummer",
             school: "Strojna",
+            years: 1,
             hours: 40,
             pay: 30000
         },
@@ -27,6 +29,7 @@ export default function EPlacan(
             ip: 3,
             job: "Jogurt tester",
             school: "gimnazija",
+            years: 5,
             hours: 40,
             pay: 35000
         },
@@ -34,6 +37,7 @@ export default function EPlacan(
             ip: 4,
             job: "Clown",
             school: "doktor ekonomije",
+            years: 15,
             hours: 40,
             pay: 40000
         },
@@ -41,6 +45,7 @@ export default function EPlacan(
             ip: 5,
             job: "Store Clerk",
             school: "Nanotech",
+            years: 2,
             hours: 40,
             pay: 30000
         },
@@ -48,6 +53,7 @@ export default function EPlacan(
             ip: 6,
             job: "Actor",
             school: "Oxfort",
+            years: 5,
             hours: 40,
             pay: 70000
         },
