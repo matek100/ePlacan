@@ -4,11 +4,11 @@ input {
     outline: none;
 }
 
-.form-input input[type=text]:focus {
+.form-input input:hover {
     border-bottom: 3px solid rgba(0, 0, 0, 1);
 }
 
-.form-input input[type=number]:focus {
+.form-input input:focus {
     border-bottom: 3px solid rgba(0, 0, 0, 1);
 }
 
