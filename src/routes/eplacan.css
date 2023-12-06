@@ -1,11 +1,29 @@
 /*ODDAJA INFO O ZAPOSLITVI*/
 
+input {
+    outline: none;
+}
+
+.form-input input[type=text]:focus {
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+}
+
+.form-input input[type=number]:focus {
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+}
+
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
 #openFormBtn {
     margin-bottom: 5px;
 }
 
 #form {
-    margin: 15px;
+    gap: 10px;
 }
 
 .form-input span {
@@ -22,8 +40,8 @@
 }
 
 .select-box {
-    position: relative;
     flex-grow: 1;
+    position: relative;
     height: 30px;
 }
 
@@ -32,20 +50,22 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     border-bottom: 2px solid black;
+    z-index: 0;
 }
 
 .selector:hover {
     border-bottom: 3px solid black;
 }
 
-#schoolArrow {
-    position: absolute;
-    right: 0;
+.selector span {
+    text-align: center;
+    flex-grow: 1;
 }
 
-.arrowUp {
-    height: 60%;
+.formArrow {
+    height: 15px;
     margin-right: 5px;
 }
 
@@ -54,7 +74,9 @@
     top: 100%;
     width: 100%;
     color: black;
+    margin-top: 3px;
     background-color: beige;
+    z-index: 1;
 }
 
 #formBtnBox {
@@ -81,22 +103,69 @@
 #filterBox {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
     position: relative;
-    height: 250px;
-    width: 300px;
-    border-radius: 10px;
-    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 11px;
+    padding: 75px 35px 75px 35px;
+    background-color: goldenrod;
     pointer-events: auto;
 }
 
-.exitBtn {
+.filterOrientation {
+    display: flex;
+    gap: 25px;
+}
+
+.filterOrientation button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    font-size: 0.6rem;
+}
+
+#filterBox input {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: inset 0 0 2px 1px black;
+    border-radius: 8px 8px 0 0;
+    padding: 0.6em 1.2em;
+    border-width: 0;
+    transition: 0.2s;
+}
+
+#filterBox input:hover {
+    box-shadow: inset 0 1px 2px 3px black;
+}
+
+#filterBox input:focus {
+    box-shadow: inset 0 1px 2px 3px black;
+}
+
+.filterSubmitBtn {
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 0 0 8px 8px;
+}
+
+#filterResetBtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    background-color: black;
+    bottom: 0px;
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 0 0 8px 8px;
+}
+
+#filterExitBtn {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 8px 8px 0 0;
 }
 
 /*TABELA REZULTATOV*/
@@ -117,6 +186,11 @@ th {
     text-align: left;
     border-bottom: 3px solid rgba(0, 0, 0, 0.3);
     padding: 10px 20px;
+    transition: 1s;
+}
+
+th:hover {
+    text-decoration: underline;
 }
 
 th:nth-of-type(2) {
@@ -128,12 +202,13 @@ th:last-of-type {
 }
 
 td {
+    text-align: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     padding: 6px 20px 10px;
 }
 
-td:nth-of-type(2) {
-    text-align: center;
+td:nth-of-type(1) {
+    text-align: left;
 }
 
 td:last-of-type {

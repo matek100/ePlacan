@@ -16,33 +16,62 @@ export default function PayForm(
     ]
 
     return open ? (<>
-        <form id="form colFlex">
+        <form id="form" class={"colFlex"}>
 
             <label class={"form-input flex"}>
                 <span>Naziv poklica :</span>
-                <input name="job-input" type={"text"} class={"form-input-field"} required></input>
+                <input
+                    name="job-input"
+                    type={"text"}
+                    class={"form-input-field"}
+                    required>
+                </input>
             </label>
 
             <label class={"form-input flex"}>
                 <span>Povprečje ur na teden :</span>
-                <input name="time-input" type={"number"} class={"form-input-field"} required></input>
+                <input
+                    name="time-input"
+                    type={"number"}
+                    class={"form-input-field"}
+                    required>
+                </input>
             </label>
 
             <label class={"form-input flex"}>
                 <span>Mesečni prihodek :</span>
-                <input name="pay-input" type={"number"} class={"form-input-field"} required></input>
+                <input
+                    name="pay-input"
+                    type={"number"}
+                    class={"form-input-field"}
+                    required>
+                </input>
             </label>
 
             <label class={"form-input flex"}>
                 <span>Leta izkušenj :</span>
-                <input name="years-input" type={"number"} class={"form-input-field"} required></input>
+                <input
+                    name="years-input"
+                    type={"number"}
+                    class={"form-input-field"}
+                    required>
+                </input>
             </label>
 
             <label class={"form-input flex"}>
                 <span>Dosežena izobrazba :</span>
                 <SelectRadio
+                    name="schoolTier"
+                    describe="Stopnja izobrazbe"
+                    selection={schoolTier}
+                />
+            </label>
+
+            <label class={"form-input flex"}>
+                <span>Šola :</span>
+                <SelectRadio
                     name="school"
-                    describe="Izberi izobrazbo"
+                    describe="Tip šole"
                     selection={schoolTier}
                 />
             </label>

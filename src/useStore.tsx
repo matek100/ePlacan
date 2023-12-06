@@ -1,18 +1,33 @@
 import { create } from 'zustand';
+import { Data, Filters } from './type';
 
 type State = {
-    izobrazba: string,
+    filter: Filters | null,
+    shownData: Data[],
+    backup: Data[],
 }
 
 type Action = {
-    setIzobrazba(newState: string): void,
+    setFilter(newState: Filters | null): void,
+    setBackup(newState: Data[]): void,
+    setShownData(newState: Data[]): void,
 }
 
 const usePlacanStore = create<State & Action>(set => ({
 
-    izobrazba: "",
-    setIzobrazba: (newState) => set(() => ({
-        izobrazba: newState
+    filter: null,
+    setFilter: (newState) => set(() => ({
+        filter: newState
+    })),
+
+    shownData: [],
+    setShownData: (newState) => set(() => ({
+        shownData: newState
+    })),
+
+    backup: [],
+    setBackup: (newState) => set(() => ({
+        backup: newState
     })),
 
 }))

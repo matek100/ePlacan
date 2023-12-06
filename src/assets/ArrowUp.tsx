@@ -1,20 +1,20 @@
 export default function ArrowUp(
-  { id, up }: { id: string, up: boolean }
+  { id, group, up }: { id: string, group?: string, up?: boolean }
 ) {
 
   return (<>
     <svg
       id={id}
-      class="arrowUp"
+      class={"arrowUp" + group ? ` ${group}` : ""}
       style={{
-        rotate: up ? "0deg" : "180deg",
+        rotate: up ? "0deg" : "180deg"
       }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 164.35 132.668">
       <polyline
         style={{
           fill: "none",
-          stroke: "#000",
+          stroke: "#ECECEC",
           strokeLinecap: "round",
           strokeMiterlimit: "10",
           strokeWidth: "30px",
@@ -23,7 +23,7 @@ export default function ArrowUp(
       <rect
         style={{
           fill: "none",
-          stroke: "#000",
+          stroke: "#fff24d",
           strokeLinecap: "round",
           strokeMiterlimit: "10",
           strokeWidth: "30px",

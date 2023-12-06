@@ -29,12 +29,12 @@ export default function SelectRadio(
         <div class={"select-box"}>
 
             <div
-                class={"selector"}
+                class={"selector flex"}
                 onClick={() => disableTillClicked()}>
                 <span>
                     {selected ? selected : describe}
                 </span>
-                <ArrowUp id={name + "Arrow"} up={!open} />
+                <ArrowUp id={name + "Arrow"} group="formArrow" up={!open} />
             </div>
 
             <div
