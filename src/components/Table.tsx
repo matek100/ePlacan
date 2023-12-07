@@ -76,7 +76,24 @@ export default function Table(
     useEffect(() => {
         setBackup(fakeData);
         setShownData(fakeData);
+        window.onscroll = function () { scrollFunction() };
     }, []);
+
+    function scrollFunction() {
+        const btn = document.getElementById("upBtn");
+        if (btn) {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+    }
+
+    const moveToTop = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
     return !formOpen ? (<>
 
@@ -229,7 +246,9 @@ export default function Table(
             </tbody>
         </table>
 
-        <button id="up-btn">
+        <button
+            id="upBtn"
+            onClick={() => moveToTop()}>
             To the top
         </button>
     </>) : <></>

@@ -87,3 +87,10 @@ th {
 .infoCell:nth-of-type(2) {
     text-align: end;
 }
+
+#upBtn {
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    font-size: 1.2em;
+}
