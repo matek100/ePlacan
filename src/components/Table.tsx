@@ -1,6 +1,7 @@
 import { useEffect } from "preact/hooks";
 import { Data } from "../type"
-import usePlacanStore from "../useStore";
+import usePlacanStore from "../usePlacanStore";
+import useFilter from "../utils/useFilter";
 import "./table.css";
 
 export default function Table(
@@ -11,7 +12,8 @@ export default function Table(
 
     const fakeData: Data[] = [
         {
-            ip: 1,
+            id: 1,
+            ip: 1000569,
             job: "Scientist",
             school: "Biotehniška",
             schoolTier: 4,
@@ -20,7 +22,8 @@ export default function Table(
             pay: 40000
         },
         {
-            ip: 2,
+            id: 2,
+            ip: 1010569,
             job: "Plummer",
             school: "Strojna",
             schoolTier: 4,
@@ -29,7 +32,8 @@ export default function Table(
             pay: 30000
         },
         {
-            ip: 3,
+            id: 3,
+            ip: 1030569,
             job: "Jogurt tester",
             school: "Splošna gimnazija",
             schoolTier: 2,
@@ -38,7 +42,8 @@ export default function Table(
             pay: 35000
         },
         {
-            ip: 4,
+            id: 4,
+            ip: 1000669,
             job: "Clown",
             school: "Ekonomija",
             schoolTier: 3,
@@ -47,7 +52,8 @@ export default function Table(
             pay: 40000
         },
         {
-            ip: 5,
+            id: 5,
+            ip: 2000569,
             job: "Store Clerk",
             school: "Biotehniška",
             schoolTier: 5,
@@ -56,7 +62,8 @@ export default function Table(
             pay: 30000
         },
         {
-            ip: 6,
+            id: 6,
+            ip: 1000579,
             job: "Actor",
             school: "Tujina - Oxfort",
             schoolTier: 4,
@@ -67,15 +74,18 @@ export default function Table(
     ]
 
     const {
+        backup,
         shownData,
         setShownData,
         setBackup,
         setFilter,
     } = usePlacanStore();
 
+    const { sortForward, sortBackward } = useFilter();
+
     useEffect(() => {
-        setBackup(fakeData);
-        setShownData(fakeData);
+        setBackup(sortForward("id", fakeData));
+        setShownData(sortBackward("id", fakeData));
         window.onscroll = function () { scrollFunction() };
     }, []);
 
@@ -175,13 +185,21 @@ export default function Table(
 
                                 <tr class={"infoRow"}>
                                     <td
-                                        class={"filterOpenBtn infoCell actMouse"}
-                                        onClick={() => setFilter("hours")}>
-                                        {/*TUKAJ BI NAJ VELJALA DVA FILTRA, NAREDI ZDRUŽEN FILTER*/}
-                                        Ure / Leta
+                                        class={"infoCell actMouse"}>
+                                        <span
+                                            class={"filterOpenBtn"}
+                                            onClick={() => setFilter("hours")}>
+                                            Ure
+                                        </span>
+                                        {" | "}
+                                        <span
+                                            class={"filterOpenBtn"}
+                                            onClick={() => setFilter("years")}>
+                                            Leta
+                                        </span>
                                     </td>
                                     <td class={"infoCell"}>
-                                        {info.hours} ur / {info.years} let{
+                                        {info.hours} ur | {info.years} let{
                                             info.years === 1 ?
                                                 "o" :
                                                 info.years === 2 ?
@@ -245,6 +263,14 @@ export default function Table(
                     })}
             </tbody>
         </table>
+
+        {shownData.length < 1 ?
+            <button
+                id="emptyTableBtn"
+                onClick={() => setShownData(sortBackward("id", backup))}>
+                Obnovi seznam
+            </button> :
+            <></>}
 
         <button
             id="upBtn"

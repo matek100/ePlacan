@@ -88,6 +88,10 @@ th {
     text-align: end;
 }
 
+#emptyTableBtn {
+    margin-top: 20px;
+}
+
 #upBtn {
     display: none;
     position: fixed;

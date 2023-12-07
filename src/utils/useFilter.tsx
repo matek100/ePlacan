@@ -1,11 +1,12 @@
 import { useState } from "preact/hooks"
-import { Filters } from "../type";
-import usePlacanStore from "../useStore";
+import { Data, Filters } from "../type";
+import usePlacanStore from "../usePlacanStore";
 
 export default function useFilter() {
 
     const {
         backup,
+        shownData,
         setShownData
     } = usePlacanStore();
 
@@ -13,9 +14,9 @@ export default function useFilter() {
 
     // FILTERS
 
-    const sortForward = (type: Filters) => {
-        return backup.sort(
-            (aEl, bEl) => {
+    const sortForward = (type: Filters, data: Data[]) => {
+        return data.sort(
+            (aEl: Data, bEl: Data) => {
 
                 const a = aEl[type];
                 const b = bEl[type];
@@ -30,9 +31,9 @@ export default function useFilter() {
             })
     }
 
-    const sortBackward = (type: Filters) => {
-        return backup.sort(
-            (aEl, bEl) => {
+    const sortBackward = (type: Filters, data: Data[]) => {
+        return data.sort(
+            (aEl: Data, bEl: Data) => {
 
                 const a = aEl[type];
                 const b = bEl[type];
@@ -60,8 +61,11 @@ export default function useFilter() {
     }
 
     {/*UPORABI POSREDOVANE REGEXE IN Z NJIMI PREIŠČE STRING*/ }
-    const searchRegexStringFilter = (type: "job" | "school", regArr: string[]) => {
-        const filtered = backup.filter(
+    const searchRegexStringFilter = (
+        type: "job" | "school", regArr: string[], keepData?: boolean
+    ) => {
+        const arr = keepData ? shownData : backup;
+        const filtered = arr.filter(
             (el) => {
                 const extract = el[type].toUpperCase();
                 const matches: string[] = [];
@@ -80,10 +84,34 @@ export default function useFilter() {
     }
 
     {/*IZDELAJ REGEXE, POIŠČI UJEMANJA, POSREDUJ REZULTATE*/ }
-    const simpleFilter = (type: "job" | "school", querry: string) => {
-        const regArr = searchRegexCreator(querry);
-        const result = searchRegexStringFilter(type, regArr);
-        if (result) { setShownData(result) }
+    const querryFilter = (
+        type: "job" | "school", inputId: string, keepData?: boolean
+    ) => {
+        const el: HTMLInputElement | null = document.getElementById(inputId);
+        if (el) {
+            const regArr = searchRegexCreator(el.value);
+            const result = searchRegexStringFilter(type, regArr, keepData);
+            setShownData(result);
+        }
+    }
+
+    const rangeFilter = (
+        type: "hours" | "years" | "pay", inputId1: string, inputId2: string, keepData?: boolean
+    ) => {
+        const el1: HTMLInputElement | null = document.getElementById(inputId1);
+        const el2: HTMLInputElement | null = document.getElementById(inputId2);
+        if (el1 && el2) {
+            let value1 = el1.value;
+            let value2 = el2.value;
+            if (value2 < value1) {
+                [value2, value1] = [value1, value2]
+                el1.value = value1;
+                el2.value = value2
+            }
+            const arr = keepData ? shownData : backup;
+            const result = arr.filter((data) => data[type] >= value1 && data[type] <= value2);
+            setShownData(result);
+        }
     }
 
     return {
@@ -91,7 +119,7 @@ export default function useFilter() {
         setFilter,
         sortForward,
         sortBackward,
-        searchRegexCreator,
-        simpleFilter
+        querryFilter,
+        rangeFilter
     }
 }

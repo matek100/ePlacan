@@ -1,4 +1,5 @@
 type Data = {
+    id: number,
     ip: number,
     job: string,
     school: string,
@@ -9,6 +10,8 @@ type Data = {
 }
 
 type Filters =
+    "id" |
+    "ip" |
     "job" |
     "hours" |
     "school" |
