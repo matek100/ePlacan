@@ -4,6 +4,7 @@ import EPlacan from './routes/EPlacan';
 import ONas from './routes/ONas';
 import useNav from "./utils/useNav";
 import './app.css'
+import "./media-size.css"
 
 
 export function App() {
@@ -14,33 +15,31 @@ export function App() {
   } = useNav()
 
   return (
-    <div id="app">
-      <div class={"container"}>
+    <div id="app" class={"colFlex"}>
 
-        <nav id="nav">
-          <h1>{path.name}</h1>
-          <Link
-            class={"nav-btn"}
-            href={path.to}
-            onClick={() => handlePathChange()}>
-            {path.nameTo}
-          </Link>
-        </nav>
+      <nav id="nav" class={"colFlex"}>
+        <h1 class={"defMouse"}>{path.name}</h1>
+        <Link
+          class={"nav-btn"}
+          href={path.to}
+          onClick={() => handlePathChange()}>
+          {path.nameTo}
+        </Link>
+      </nav>
 
-        <Router>
+      <Router>
 
-          <EPlacan path="/" />
+        <EPlacan path="/" />
 
-          <ONas path="/piratska-stranka" />
+        <ONas path="/piratska-stranka" />
 
-          <div default>
-            <h3>Ta stran ne obstaja.</h3>
-            <p>Poskusite "/" ali "/piratska-stranka"</p>
-          </div>
+        <div default>
+          <h3>Ta stran ne obstaja.</h3>
+          <p>Poskusite "/" ali "/piratska-stranka"</p>
+        </div>
 
-        </Router>
+      </Router>
 
-      </div>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import ArrowUp from "../assets/ArrowUp";
 import usePlacanStore from "../useStore";
 import useComponent from "../utils/useFilter";
+import "./filter.css";
 
-export default function PayFilter() {
+export default function Filter() {
 
     const { filter, setFilter } = usePlacanStore();
 
@@ -18,6 +19,7 @@ export default function PayFilter() {
 
                 <button
                     id="filterExitBtn"
+                    class={"noResizeBtn"}
                     onClick={() => setFilter(null)}>
                     Zapri filter
                 </button>
@@ -43,7 +45,7 @@ export default function PayFilter() {
                                 maxLength={20}>
                             </input>
                             <button
-                                class={"filterSubmitBtn"}
+                                class={"filterSubmitBtn noResizeBtn"}
                                 onClick={() => {
                                     const el: HTMLInputElement | null = document.getElementById("titleWordFilter");
                                     el ? simpleFilter("job", el.value) : {}
@@ -75,7 +77,7 @@ export default function PayFilter() {
                                 maxLength={20}>
                             </input>
                             <button
-                                class={"filterSubmitBtn"}
+                                class={"filterSubmitBtn noResizeBtn"}
                                 onClick={() => {
                                     const el: HTMLInputElement | null = document.getElementById("titleWordFilter");
                                     el ? simpleFilter("job", el.value) : {}
@@ -107,7 +109,7 @@ export default function PayFilter() {
                                 maxLength={20}>
                             </input>
                             <button
-                                class={"filterSubmitBtn"}
+                                class={"filterSubmitBtn noResizeBtn"}
                                 onClick={() => {
                                     const el: HTMLInputElement | null = document.getElementById("titleWordFilter");
                                     el ? simpleFilter("job", el.value) : {}
@@ -139,7 +141,7 @@ export default function PayFilter() {
                                 maxLength={20}>
                             </input>
                             <button
-                                class={"filterSubmitBtn"}
+                                class={"filterSubmitBtn noResizeBtn"}
                                 onClick={() => {
                                     const el: HTMLInputElement | null = document.getElementById("titleWordFilter");
                                     el ? simpleFilter("job", el.value) : {}
@@ -171,7 +173,7 @@ export default function PayFilter() {
                                 maxLength={20}>
                             </input>
                             <button
-                                class={"filterSubmitBtn"}
+                                class={"filterSubmitBtn noResizeBtn"}
                                 onClick={() => {
                                     const el: HTMLInputElement | null = document.getElementById("titleWordFilter");
                                     el ? simpleFilter("job", el.value) : {}
@@ -182,7 +184,11 @@ export default function PayFilter() {
                     </> :
                     <></>}
 
-                <button id="filterResetBtn">Obnovi seznam</button>
+                <button
+                    id="filterResetBtn"
+                    class={"noResizeBtn"}>
+                    Obnovi seznam
+                </button>
 
             </div>
         </div>

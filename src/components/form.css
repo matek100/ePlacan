@@ -1,0 +1,111 @@
+/*ENTER BUTTON*/
+
+#shareInfoBtn {
+    font-size: 1.2em;
+    margin: 30px auto 15px;
+}
+
+/*FORM*/
+
+#form {
+    font-size: 1.3em;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.formInput {
+    align-items: center;
+}
+
+.formInputField {
+    width: 100%;
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 0px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    padding: 0.3em 0 0.4em;
+    background-color: transparent;
+    outline: none;
+}
+
+.formInputField:hover,
+.formInputField:focus {
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+#formBtnBox {
+    gap: 7px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#formBtnBox button {
+    font-size: 1.3em;
+}
+
+/*DROPDOWN MENU*/
+
+.select-box {
+    position: relative;
+    width: 100%;
+}
+
+.selector {
+    position: relative;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    padding: 0.3em 0 0.4em;
+    z-index: 0;
+}
+
+.selector:hover {
+    border-bottom: 3px solid rgba(0, 0, 0, 1);
+}
+
+.formArrow {
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    height: 20px;
+}
+
+.selection {
+    position: absolute;
+    top: 100%;
+    width: calc(100% - 20px);
+    color: white;
+    text-align: center;
+    margin-top: 3px;
+    border-radius: 0 0 10px 10px;
+    border-left: 1px solid orange;
+    border-right: 1px solid orange;
+    border-bottom: 1px solid orange;
+    background-color: #1a1a1a;
+    padding: 0 10px 5px;
+    z-index: 1;
+}
+
+.option input {
+    display: none;
+}
+
+.option {
+    margin: 10px;
+    transition: 0.2s;
+}
+
+.option:hover {
+    color: orange;
+}
+
+.option:nth-of-type(1):hover {
+    color: red;
+}

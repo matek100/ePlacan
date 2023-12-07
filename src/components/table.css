@@ -1,0 +1,89 @@
+table {
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.2em;
+    border-collapse: collapse;
+}
+
+caption {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 5px auto 10px;
+}
+
+th {
+    text-align: left;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    transition: 1s;
+}
+
+.rowUndeline {
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+#wideTable {
+    display: none;
+}
+
+#wideTable th:hover {
+    color: orange;
+}
+
+#wideTable th:nth-of-type(2) {
+    text-align: center;
+}
+
+#wideTable th:last-of-type {
+    text-align: right;
+}
+
+#wideTable td {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 6px 20px 10px;
+}
+
+#wideTable td:nth-of-type(1) {
+    text-align: left;
+}
+
+#wideTable td:last-of-type {
+    text-align: right;
+}
+
+#longTable .filterOpenBtn {
+    transition: 0.25s;
+}
+
+#longTable .filterOpenBtn:hover {
+    color: orange;
+}
+
+#longTable th:nth-of-type(1) {
+    text-align: start;
+    border-bottom: 3px solid black;
+}
+
+#longTable th:nth-of-type(2) {
+    text-align: end;
+    border-bottom: 3px solid black;
+}
+
+.infoRow {
+    border-bottom: 1px solid black;
+}
+
+.infoCell {
+    padding: 5px 15px 8px;
+}
+
+.infoCell:nth-of-type(1) {
+    font-weight: 600;
+}
+
+.infoCell:nth-of-type(2) {
+    text-align: end;
+}

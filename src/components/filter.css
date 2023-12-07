@@ -1,0 +1,83 @@
+#filterPosition {
+    display: flex;
+    justify-content: center;
+}
+
+#filterBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    top: 30%;
+    border: 1px solid black;
+    border-radius: 11px;
+    padding: 75px 35px 75px 35px;
+    background-color: goldenrod;
+    pointer-events: auto;
+}
+
+.filterOrientation {
+    display: flex;
+    gap: 25px;
+}
+
+.filterOrientation button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    font-size: 0.6rem;
+}
+
+#filterBox input {
+    width: 175px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: inset 0 0 2px 1px black;
+    border-radius: 8px 8px 0 0;
+    padding: 0.6em 1.2em;
+    border-width: 0;
+    transition: 0.2s;
+}
+
+#filterBox input:hover {
+    box-shadow: inset 0 1px 2px 3px black;
+}
+
+#filterBox input:focus {
+    box-shadow: inset 0 1px 2px 3px black;
+}
+
+.filterSubmitBtn {
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 0 0 8px 8px;
+}
+
+#filterResetBtn {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 0 0 8px 8px;
+}
+
+#filterExitBtn {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    font-size: 1.2rem;
+    border-radius: 8px 8px 0 0;
+}
+
+.noResizeBtn:hover {
+    border: 0.5px solid black;
+}
+
+.noResizeBtn:active {
+    transform: scale(1);
+    box-shadow: inset 0 0 2px 0.5px orange;
+}

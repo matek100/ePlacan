@@ -31,9 +31,7 @@ export default function SelectRadio(
             <div
                 class={"selector flex"}
                 onClick={() => disableTillClicked()}>
-                <span>
-                    {selected ? selected : describe}
-                </span>
+                {selected ? selected : describe}
                 <ArrowUp id={name + "Arrow"} group="formArrow" up={!open} />
             </div>
 
@@ -71,7 +69,10 @@ export default function SelectRadio(
                                 name={name}
                                 type={"radio"}
                                 value={option}
-                                onClick={() => setSelected(option)}>
+                                onClick={() => {
+                                    setSelected(option)
+                                    disableTillClicked();
+                                }}>
                             </input>
                             <span>
                                 {option}

@@ -23,7 +23,7 @@ export default function ArrowUp(
       <rect
         style={{
           fill: "none",
-          stroke: "#fff24d",
+          stroke: "orange",
           strokeLinecap: "round",
           strokeMiterlimit: "10",
           strokeWidth: "30px",

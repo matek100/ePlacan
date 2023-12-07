@@ -1,8 +1,7 @@
 import { useState } from "preact/hooks"
-import PayForm from "../components/PayForm";
-import PayFilter from "../components/PayFilter";
-import PayTable from "../components/PayTable";
-import "./eplacan.css";
+import Form from "../components/Form";
+import Filter from "../components/Filter";
+import Table from "../components/Table";
 
 export default function EPlacan(
     { path }: { path: string }
@@ -12,16 +11,16 @@ export default function EPlacan(
 
     return (<>
 
-        <PayForm
+        <Form
             open={formOpen}
             setOpen={setFormOpen}
         />
 
-        <PayTable
+        <Table
             formOpen={formOpen}
         />
 
-        <PayFilter />
+        <Filter />
 
     </>)
 }
