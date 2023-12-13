@@ -11,6 +11,13 @@ export default function useFilter() {
     } = usePlacanStore();
 
     const [filter, setFilter] = useState<Filters | null>(null);
+    const [activeSchoolTiers, setActiveSchoolTiers] = useState([
+        { id: 1, status: true },
+        { id: 2, status: true },
+        { id: 3, status: true },
+        { id: 4, status: true },
+        { id: 5, status: true }
+    ]);
 
     // FILTERS
 
@@ -65,9 +72,10 @@ export default function useFilter() {
         type: "job" | "school", regArr: string[], keepData?: boolean
     ) => {
         const arr = keepData ? shownData : backup;
+        console.log(type, keepData, regArr)
         const filtered = arr.filter(
-            (el) => {
-                const extract = el[type].toUpperCase();
+            (data) => {
+                const extract = data[type].toUpperCase();
                 const matches: string[] = [];
                 regArr.forEach((regex) => {
                     const result = extract.search(new RegExp(regex));
@@ -76,7 +84,7 @@ export default function useFilter() {
                     }
                 })
                 if (matches.length > 0) {
-                    return el;
+                    return data;
                 }
             }
         );
@@ -88,11 +96,9 @@ export default function useFilter() {
         type: "job" | "school", inputId: string, keepData?: boolean
     ) => {
         const el: HTMLInputElement | null = document.getElementById(inputId);
-        if (el) {
-            const regArr = searchRegexCreator(el.value);
-            const result = searchRegexStringFilter(type, regArr, keepData);
-            setShownData(result);
-        }
+        const regArr = searchRegexCreator(el.value);
+        const result = searchRegexStringFilter(type, regArr, keepData);
+        setShownData(result);
     }
 
     const rangeFilter = (
@@ -114,12 +120,30 @@ export default function useFilter() {
         }
     }
 
+    {/*POSODOBI STATUS AKTIVNIH BOLONSKIH STOPENJ*/ }
+    const changeSchoolTierStatus = (tier: number) => {
+        let newArr = [...activeSchoolTiers];
+        newArr[tier - 1].status = !newArr[tier - 1].status;
+        setActiveSchoolTiers(newArr);
+    }
+
+    {/*FILTRIRAJ GLEDE NA AKTIVNE BOLONSKE STOPNJE*/ }
+    const schoolTierFilter = () => {
+        const filtered = backup.filter((data) =>
+            activeSchoolTiers[data.schoolTier - 1].status
+        );
+        setShownData(filtered);
+    }
+
     return {
         filter,
+        activeSchoolTiers,
         setFilter,
         sortForward,
         sortBackward,
         querryFilter,
-        rangeFilter
+        rangeFilter,
+        changeSchoolTierStatus,
+        schoolTierFilter
     }
 }

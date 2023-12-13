@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks"
+import { useState } from "preact/hooks";
 import ArrowUp from "../assets/ArrowUp";
 import usePlacanStore from "../usePlacanStore";
 import useComponent from "../utils/useFilter";
@@ -14,6 +14,9 @@ export default function Filter() {
     } = usePlacanStore();
 
     const {
+        activeSchoolTiers,
+        changeSchoolTierStatus,
+        schoolTierFilter,
         sortForward,
         sortBackward,
         querryFilter,
@@ -88,20 +91,88 @@ export default function Filter() {
                     <></>}
 
                 {filter === "school" ?
-                    <span class={"colFlex"}>
-                        <input
-                            id="schoolFilterInput"
-                            class={"filterInput"}
-                            type="text"
-                            placeholder="Stopnja izobrazbe"
-                            maxLength={20}>
-                        </input>
-                        <button
-                            class={"filterSubmitBtn noResizeBtn"}
-                            onClick={() => querryFilter("school", "schoolFilterInput", keepArrData)}>
-                            Potrdi
-                        </button>
-                    </span> :
+                    <>
+                        <div class={"filterSchoolTierBtns flex"}>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[0].status ? "" : "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(1);
+                                    schoolTierFilter();
+                                }}>
+                                1
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[1].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(2);
+                                    schoolTierFilter();
+                                }}>
+                                2
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[2].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(3);
+                                    schoolTierFilter();
+                                }}>
+                                3
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[3].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(4);
+                                    schoolTierFilter();
+                                }}>
+                                4
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[4].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(5);
+                                    schoolTierFilter();
+                                }}>
+                                5
+                            </button>
+                        </div>
+                        <span class={"colFlex"}>
+
+                            <input
+                                id="schoolFilterInput"
+                                class={"filterInput"}
+                                type="text"
+                                placeholder="Naziv šole"
+                                maxLength={20}>
+                            </input>
+                            <button
+                                class={"filterSubmitBtn noResizeBtn"}
+                                onClick={() => querryFilter("school", "schoolFilterInput", keepArrData)}>
+                                Potrdi
+                            </button>
+                        </span>
+                    </> :
                     <></>}
 
                 {filter === "years" ?
@@ -110,13 +181,13 @@ export default function Filter() {
                             <input
                                 id="yearsFilterInputMin"
                                 type="text"
-                                placeholder="Razpon let"
+                                placeholder="Min let"
                                 maxLength={20}>
                             </input>
                             <input
                                 id="yearsFilterInputMax"
                                 type="text"
-                                placeholder="Razpon let"
+                                placeholder="Max let"
                                 maxLength={20}>
                             </input>
                         </span>
@@ -136,13 +207,13 @@ export default function Filter() {
                                 <input
                                     id="payFilterInputMin"
                                     type="text"
-                                    placeholder="Razpon let"
+                                    placeholder="Min plača"
                                     maxLength={20}>
                                 </input>
                                 <input
                                     id="payFilterInputMax"
                                     type="text"
-                                    placeholder="Razpon let"
+                                    placeholder="Max plača"
                                     maxLength={20}>
                                 </input>
                             </span>

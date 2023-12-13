@@ -31,6 +31,16 @@
     font-size: 0.6rem;
 }
 
+.filterSchoolTierBtns {
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 300px;
+}
+
+.schoolTierBtn {
+    padding: 0.6em 1em;
+}
+
 .filterInput {
     width: calc(220px - 1.8rem);
     font-size: 1.3em;

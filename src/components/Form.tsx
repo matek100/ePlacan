@@ -101,6 +101,7 @@ export default function Form(
                     onClick={() => setOpen(false)}>
                     Deli
                 </button>
+                {/*DODAJ PRETVORNIKE, RECIMO PRETVORNIK BRUTO-NETO, EURO - DOLLAR*/}
             </div>
         </>
         )
