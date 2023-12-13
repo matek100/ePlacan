@@ -3,7 +3,7 @@ type Data = {
     ip: number,
     job: string,
     school: string,
-    schoolTier: number,
+    schoolTier: 0 | 1 | 2 | 3 | 4 | 5,
     years: number,
     hours: number,
     pay: number

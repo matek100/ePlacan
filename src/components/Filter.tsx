@@ -99,6 +99,17 @@ export default function Filter() {
                                     backgroundColor: activeSchoolTiers[0].status ? "" : "rgba(26, 26, 26, 0.8)"
                                 }}
                                 onClick={() => {
+                                    changeSchoolTierStatus(0);
+                                    schoolTierFilter();
+                                }}>
+                                0
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[1].status ? "" : "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
                                     changeSchoolTierStatus(1);
                                     schoolTierFilter();
                                 }}>
@@ -107,7 +118,7 @@ export default function Filter() {
                             <button
                                 class={"schoolTierBtn"}
                                 style={{
-                                    backgroundColor: activeSchoolTiers[1].status ?
+                                    backgroundColor: activeSchoolTiers[2].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
@@ -117,10 +128,12 @@ export default function Filter() {
                                 }}>
                                 2
                             </button>
+                        </div>
+                        <div class={"filterSchoolTierBtns flex"}>
                             <button
                                 class={"schoolTierBtn"}
                                 style={{
-                                    backgroundColor: activeSchoolTiers[2].status ?
+                                    backgroundColor: activeSchoolTiers[3].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
@@ -133,7 +146,7 @@ export default function Filter() {
                             <button
                                 class={"schoolTierBtn"}
                                 style={{
-                                    backgroundColor: activeSchoolTiers[3].status ?
+                                    backgroundColor: activeSchoolTiers[4].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
@@ -146,7 +159,7 @@ export default function Filter() {
                             <button
                                 class={"schoolTierBtn"}
                                 style={{
-                                    backgroundColor: activeSchoolTiers[4].status ?
+                                    backgroundColor: activeSchoolTiers[5].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}

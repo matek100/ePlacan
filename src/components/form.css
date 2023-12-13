@@ -42,7 +42,7 @@ input[type='number']::-webkit-outer-spin-button {
 #formBtnBox {
     gap: 7px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 #formBtnBox button {

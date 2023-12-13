@@ -9,12 +9,54 @@ export default function Form(
 ) {
 
     const schoolTier = [
+        "- brez šole -",
         "1. bolonska",
         "2. bolonska",
         "3. bolonska",
         "4. bolonska",
         "5. bolonska"
     ]
+
+    const schoolsByTier = [
+        {
+            tier: 0,
+            schoolsArr: ["brez"]
+        },
+        {
+            tier: 1,
+            schoolsArr: ["osnovna šola"]
+        },
+        {
+            tier: 2,
+            schoolsArr: ["osnovna šola"]
+        },
+        {
+            tier: 3,
+            schoolsArr: ["osnovna šola"]
+        },
+        {
+            tier: 4,
+            schoolsArr: ["osnovna šola"]
+        },
+        {
+            tier: 5,
+            schoolsArr: ["osnovna šola"]
+        }
+    ]
+
+    const submit = (e: Event) => {
+        e.preventDefault();
+        if (e.target) {
+            const formatedData = {
+                job: e.target.elements["job-input"].value,
+                years: e.target.elements["years-input"].value,
+                hours: e.target.elements["time-input"].value,
+                pay: e.target.elements["pay-input"].value
+            }
+            console.log(formatedData);
+        }
+        {/*POBRATI MORAŠ ŠE "IP", SERVER NAJ DODA ŠE "ID"*/ }
+    }
 
     return !open ? (
         <button
@@ -24,7 +66,10 @@ export default function Form(
         </button>
     ) :
         (<>
-            <form id="form" class={"colFlex"}>
+            <form
+                id="form"
+                class={"colFlex"}
+                onSubmit={(e) => submit(e)}>
 
                 <label class={"formInput colFlex"}>
                     <span>Naziv poklica</span>
@@ -32,6 +77,7 @@ export default function Form(
                         name="job-input"
                         type={"text"}
                         class={"formInputField "}
+                        autocomplete={"off"}
                         required>
                     </input>
                 </label>
@@ -42,6 +88,7 @@ export default function Form(
                         name="time-input"
                         type={"number"}
                         class={"formInputField "}
+                        autocomplete={"off"}
                         required>
                     </input>
                 </label>
@@ -52,6 +99,7 @@ export default function Form(
                         name="pay-input"
                         type={"number"}
                         class={"formInputField "}
+                        autocomplete={"off"}
                         required>
                     </input>
                 </label>
@@ -62,6 +110,7 @@ export default function Form(
                         name="years-input"
                         type={"number"}
                         class={"formInputField "}
+                        autocomplete={"off"}
                         required>
                     </input>
                 </label>
@@ -84,25 +133,25 @@ export default function Form(
                     />
                 </label>
 
+                <div
+                    id="formBtnBox"
+                    class={"colFlex"}>
+                    <button
+                        onClick={() => setOpen(false)}>
+                        Prekliči
+                    </button>
+                    <button
+                        type={"reset"}>
+                        Izprazni
+                    </button>
+                    <button
+                        type={"submit"}>
+                        Deli
+                    </button>
+                </div>
             </form>
 
-            <div
-                id="formBtnBox"
-                class={"colFlex"}>
-                <button
-                    onClick={() => setOpen(false)}>
-                    Prekliči
-                </button>
-                <button
-                    onClick={() => setOpen(false)}>
-                    Izprazni
-                </button>
-                <button
-                    onClick={() => setOpen(false)}>
-                    Deli
-                </button>
-                {/*DODAJ PRETVORNIKE, RECIMO PRETVORNIK BRUTO-NETO, EURO - DOLLAR*/}
-            </div>
+            {/*DODAJ PRETVORNIKE, RECIMO PRETVORNIK BRUTO-NETO, EURO - DOLLAR*/}
         </>
         )
 }
