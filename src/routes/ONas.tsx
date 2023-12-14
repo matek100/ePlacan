@@ -1,7 +1,6 @@
 import "./onas.css";
 
 export default function ONas(
-    { path }: { path: string }
 ) {
     return (<>
         <section id="explainBox" class={"defMouse"}>

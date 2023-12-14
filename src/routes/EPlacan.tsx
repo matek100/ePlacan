@@ -4,7 +4,6 @@ import Filter from "../components/Filter";
 import Table from "../components/Table";
 
 export default function EPlacan(
-    { path }: { path: string }
 ) {
 
     const [formOpen, setFormOpen] = useState(false);
