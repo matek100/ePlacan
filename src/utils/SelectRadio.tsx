@@ -1,16 +1,23 @@
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import ArrowUp from "../assets/ArrowUp"
 
 export default function SelectRadio(
-    { name, describe, selection }: {
+    { name, describe, selection, onClickFunction }: {
         name: string,
         describe?: string,
-        selection: string[]
+        selection: string[],
+        onClickFunction?: (report: any) => void
     }
 ) {
 
     const [selected, setSelected] = useState("");
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (onClickFunction) {
+            onClickFunction(selected);
+        }
+    }, [selected]);
 
     const disableTillClicked = () => {
         const el = document.getElementById(name + "Id");
@@ -29,6 +36,7 @@ export default function SelectRadio(
         <div class={"select-box"}>
 
             <div
+                id={name + "Selected"}
                 class={"selector flex"}
                 onClick={() => disableTillClicked()}>
                 {selected ? selected : describe}
@@ -40,7 +48,7 @@ export default function SelectRadio(
                 class={"selection"}
                 style={{ display: "none" }}>
 
-                {/*TA ELEMENT UZNIČI DEFAULT SELECT BUG*/}
+                {/*TA ELEMENT UNIČI DEFAULT SELECT BUG*/}
                 <input
                     disabled={true}
                     name={name}

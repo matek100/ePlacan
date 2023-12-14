@@ -1,4 +1,5 @@
 import SelectRadio from "../utils/SelectRadio"
+import useForm from "../utils/useForm";
 import "./form.css";
 
 export default function Form(
@@ -8,60 +9,19 @@ export default function Form(
     }
 ) {
 
-    const schoolTier = [
-        "- brez šole -",
-        "1. bolonska",
-        "2. bolonska",
-        "3. bolonska",
-        "4. bolonska",
-        "5. bolonska"
-    ]
-
-    const schoolsByTier = [
-        {
-            tier: 0,
-            schoolsArr: ["brez"]
-        },
-        {
-            tier: 1,
-            schoolsArr: ["osnovna šola"]
-        },
-        {
-            tier: 2,
-            schoolsArr: ["osnovna šola"]
-        },
-        {
-            tier: 3,
-            schoolsArr: ["osnovna šola"]
-        },
-        {
-            tier: 4,
-            schoolsArr: ["osnovna šola"]
-        },
-        {
-            tier: 5,
-            schoolsArr: ["osnovna šola"]
-        }
-    ]
-
-    const submit = (e: Event) => {
-        e.preventDefault();
-        if (e.target) {
-            const formatedData = {
-                job: e.target.elements["job-input"].value,
-                years: e.target.elements["years-input"].value,
-                hours: e.target.elements["time-input"].value,
-                pay: e.target.elements["pay-input"].value
-            }
-            console.log(formatedData);
-        }
-        {/*POBRATI MORAŠ ŠE "IP", SERVER NAJ DODA ŠE "ID"*/ }
-    }
+    const {
+        schoolTier,
+        educationTier,
+        submit,
+        setEducationTier,
+        getSchoolPrograms,
+        checkFormSubmitions,
+    } = useForm();
 
     return !open ? (
         <button
             id="shareInfoBtn"
-            onClick={() => setOpen(true)}>
+            onClick={() => checkFormSubmitions(setOpen)}>
             Želim deliti svoje stanje!
         </button>
     ) :
@@ -77,6 +37,7 @@ export default function Form(
                         name="job-input"
                         type={"text"}
                         class={"formInputField "}
+                        placeholder={"Primer: Pomočnik čistilke"}
                         autocomplete={"off"}
                         required>
                     </input>
@@ -87,7 +48,8 @@ export default function Form(
                     <input
                         name="time-input"
                         type={"number"}
-                        class={"formInputField "}
+                        class={"formInputField"}
+                        placeholder={"Navadni: 8 ur x 5 = 40 ur"}
                         autocomplete={"off"}
                         required>
                     </input>
@@ -98,7 +60,8 @@ export default function Form(
                     <input
                         name="pay-input"
                         type={"number"}
-                        class={"formInputField "}
+                        class={"formInputField"}
+                        placeholder={"Bruto €"}
                         autocomplete={"off"}
                         required>
                     </input>
@@ -109,27 +72,38 @@ export default function Form(
                     <input
                         name="years-input"
                         type={"number"}
-                        class={"formInputField "}
+                        class={"formInputField"}
+                        placeholder={"Relevantno delo"}
                         autocomplete={"off"}
                         required>
                     </input>
                 </label>
 
-                <label class={"formInput colFlex"}>
+                <label
+                    class={"formInput colFlex"}>
                     <span>Dosežena izobrazba</span>
                     <SelectRadio
                         name="schoolTier"
                         describe="Stopnja izobrazbe"
                         selection={schoolTier}
+                        onClickFunction={setEducationTier}
                     />
                 </label>
 
-                <label class={"formInput colFlex"}>
-                    <span>Šola</span>
+                <label
+                    class={"formInput colFlex"}
+                    style={
+                        educationTier &&
+                            educationTier !== "- brez šole -" &&
+                            educationTier !== "1. bolonska" ?
+                            { visibility: "visible" } :
+                            { visibility: "hidden", position: "absolute" }
+                    }>
+                    <span>Izobraževalni program</span>
                     <SelectRadio
                         name="school"
-                        describe="Tip šole"
-                        selection={schoolTier}
+                        describe="Vrsta programa"
+                        selection={getSchoolPrograms()}
                     />
                 </label>
 
@@ -149,9 +123,19 @@ export default function Form(
                         Deli
                     </button>
                 </div>
+
+                <button
+                    class={"linkToOutside"}
+                    href={"https://www.nlb.si/menjalnica/"}>
+                    Link do pretvornika valut na NLB.si
+                </button>
+                <button
+                    class={"linkToOutside"}
+                    href={"https://data.si/izracun-place/"}>
+                    Link do informativnega izračuna plače na DATA.si
+                </button>
             </form>
 
-            {/*DODAJ PRETVORNIKE, RECIMO PRETVORNIK BRUTO-NETO, EURO - DOLLAR*/}
         </>
         )
 }
