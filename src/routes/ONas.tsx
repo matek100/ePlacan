@@ -1,7 +1,7 @@
 import "./onas.css";
 
-export default function ONas(
-) {
+export default function ONas() {
+
     return (<>
         <section id="explainBox" class={"defMouse"}>
             <p>ePlačan je namenjen spodbujanju deljenja informacij o prejetem plačilu za opravljeno delo, še posebno med mladimi.</p>
