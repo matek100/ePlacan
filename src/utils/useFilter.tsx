@@ -96,17 +96,19 @@ export default function useFilter() {
     const querryFilter = (
         type: "job" | "school", inputId: string, keepData?: boolean
     ) => {
-        const el: HTMLInputElement | null = document.getElementById(inputId);
-        const regArr = searchRegexCreator(el.value);
-        const result = searchRegexStringFilter(type, regArr, keepData);
-        setShownData(result);
+        const el: any = document.getElementById(inputId);
+        if (el) {
+            const regArr = searchRegexCreator(el.value);
+            const result = searchRegexStringFilter(type, regArr, keepData);
+            setShownData(result);
+        }
     }
 
     const rangeFilter = (
         type: "hours" | "years" | "pay", inputId1: string, inputId2: string, keepData?: boolean
     ) => {
-        const el1: HTMLInputElement | null = document.getElementById(inputId1);
-        const el2: HTMLInputElement | null = document.getElementById(inputId2);
+        const el1: any = document.getElementById(inputId1);
+        const el2: any = document.getElementById(inputId2);
         if (el1 && el2) {
             let value1 = el1.value;
             let value2 = el2.value;
