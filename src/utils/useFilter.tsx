@@ -110,15 +110,15 @@ export default function useFilter() {
         const el1: any = document.getElementById(inputId1);
         const el2: any = document.getElementById(inputId2);
         if (el1 && el2) {
-            let value1 = el1.value;
-            let value2 = el2.value;
+            let value1: number = el1.value;
+            let value2: number = el2.value;
             if (value2 < value1) {
                 [value2, value1] = [value1, value2]
                 el1.value = value1;
                 el2.value = value2
             }
             const arr = keepData ? shownData : backup;
-            const result = arr.filter((data) => data[type] >= value1 && data[type] <= value2);
+            const result = arr.filter((data) => Number(data[type]) >= value1 && Number(data[type]) <= value2);
             setShownData(result);
         }
     }
