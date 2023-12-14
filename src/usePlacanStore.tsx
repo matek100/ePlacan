@@ -5,14 +5,16 @@ type State = {
     filter: Filters | null,
     shownData: Data[],
     backup: Data[],
-    formSubmitedTimes: number
+    formSubmitedTimes: number,
+    loc: string,
 }
 
 type Action = {
     setFilter(newState: Filters | null): void,
     setBackup(newState: Data[]): void,
     setShownData(newState: Data[]): void,
-    updateFormSubmitedTimes(newState: number): void
+    updateFormSubmitedTimes(newState: number): void,
+    setLoc(newState: string): void,
 }
 
 const usePlacanStore = create<State & Action>(set => ({
@@ -37,6 +39,10 @@ const usePlacanStore = create<State & Action>(set => ({
         formSubmitedTimes: newState
     })),
 
+    loc: "/",
+    setLoc: (newState: string) => set(() => ({
+        loc: newState
+    })),
 }))
 
 export default usePlacanStore;

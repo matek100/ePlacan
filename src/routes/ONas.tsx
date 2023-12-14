@@ -1,6 +1,16 @@
+import { useEffect } from "preact/hooks";
+import usePlacanStore from "../usePlacanStore";
 import "./onas.css";
 
-export default function ONas() {
+export default function ONas(
+    { path }: { path: string }
+) {
+
+    const { setLoc } = usePlacanStore();
+
+    useEffect(() => {
+        setLoc(path)
+    }, []);
 
     return (<>
         <section id="explainBox" class={"defMouse"}>
