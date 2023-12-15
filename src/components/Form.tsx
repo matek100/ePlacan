@@ -126,6 +126,7 @@ export default function Form(
                 </div>
 
                 <a
+                    class={"colFlex"}
                     href={"https://www.nlb.si/menjalnica/"}
                     target="_blank">
                     <button
@@ -134,7 +135,9 @@ export default function Form(
                         Link do pretvornika valut na NLB.si
                     </button>
                 </a>
-                <a href={"https://data.si/izracun-place/"}
+                <a
+                    class={"colFlex"}
+                    href={"https://data.si/izracun-place/"}
                     target="_blank">
                     <button
                         type={"button"}
