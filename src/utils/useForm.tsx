@@ -115,6 +115,8 @@ export default function useForm() {
         }
     }
 
+    {/*FORMA NAJ SE NA KONCU USPEŠNEGA PROCESA ZAPRE, DA PREPREČIŠ SAMOZAKLEP*/ }
+
     const checkFormSubmitions = (
         func: (newState: boolean) => void
     ) => {

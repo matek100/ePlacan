@@ -111,6 +111,7 @@ export default function Form(
                     id="formBtnBox"
                     class={"colFlex"}>
                     <button
+                        type={"button"}
                         onClick={() => setOpen(false)}>
                         Prekliči
                     </button>
@@ -124,16 +125,23 @@ export default function Form(
                     </button>
                 </div>
 
-                <button
-                    class={"linkToOutside"}
-                    href={"https://www.nlb.si/menjalnica/"}>
-                    Link do pretvornika valut na NLB.si
-                </button>
-                <button
-                    class={"linkToOutside"}
-                    href={"https://data.si/izracun-place/"}>
-                    Link do informativnega izračuna plače na DATA.si
-                </button>
+                <a
+                    href={"https://www.nlb.si/menjalnica/"}
+                    target="_blank">
+                    <button
+                        type={"button"}
+                        class={"linkToOutside"}>
+                        Link do pretvornika valut na NLB.si
+                    </button>
+                </a>
+                <a href={"https://data.si/izracun-place/"}
+                    target="_blank">
+                    <button
+                        type={"button"}
+                        class={"linkToOutside"}>
+                        Link do informativnega izračuna plače na DATA.si
+                    </button>
+                </a>
             </form>
 
         </>
