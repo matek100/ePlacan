@@ -1,4 +1,4 @@
-declare namespace preact {
+export namespace preact {
     namespace JSX {
         interface IntrinsicAttributes {
             path?: string
