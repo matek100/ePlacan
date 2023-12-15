@@ -1,7 +1,7 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Spectral", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -27,6 +27,42 @@
   background-color: rgb(50, 50, 50);
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.4em;
+  text-align: center;
+  line-height: 1.1;
+}
+
+p {
+  font-size: 1.4em;
+}
+
+input {
+  outline: none;
+}
+
+input[type="text"],
+input[type="number"] {
+  letter-spacing: 0.05em;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input::placeholder {
+  font-family: "Open Sans";
+  font-weight: 700;
+}
+
 a {
   font-size: 1.2em;
   font-weight: 500;
@@ -39,34 +75,13 @@ a:hover {
   color: orange;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  text-align: center;
-  font-size: 2.2em;
-  line-height: 1.1;
-}
-
-p {
-  font-size: 1.2em;
-}
-
-input {
-  outline: none;
-}
-
 button {
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: 700;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: 0.25s;

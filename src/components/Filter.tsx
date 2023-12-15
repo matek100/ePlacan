@@ -220,13 +220,13 @@ export default function Filter() {
                                 <input
                                     id="payFilterInputMin"
                                     type="text"
-                                    placeholder="Min plača"
+                                    placeholder="Min €"
                                     maxLength={20}>
                                 </input>
                                 <input
                                     id="payFilterInputMax"
                                     type="text"
-                                    placeholder="Max plača"
+                                    placeholder="Max €"
                                     maxLength={20}>
                                 </input>
                             </span>

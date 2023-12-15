@@ -94,7 +94,7 @@ export default function useForm() {
         {/*SERVER NAJ DODA ŠE "ID"*/ }
     }
 
-    const submit = (e: any) => {
+    const submit = (e: any, closeFunc: (newState: boolean) => void) => {
         e.preventDefault();
         const htmlArr = e.target.elements;
         if (htmlArr) {
@@ -112,6 +112,9 @@ export default function useForm() {
                 toast.error("Manjka IZOBRAŽEVALNI PROGRAM.");
             } else {
                 formalize(htmlArr, schoolTier, school);
+                closeFunc(false);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             }
         }
     }
@@ -119,20 +122,18 @@ export default function useForm() {
     {/*FORMA NAJ SE NA KONCU USPEŠNEGA PROCESA ZAPRE, DA PREPREČIŠ SAMOZAKLEP*/ }
 
     const checkFormSubmitions = (
-        func: (newState: boolean) => void
+        formSubmitFunc: (newState: boolean) => void
     ) => {
         {/*SPREMENI NA 5 OB ZAKLJUČKU PROJEKTA*/ }
-        formSubmitedTimes < 999 ?
-            func(true) :
+        formSubmitedTimes < 6 ?
+            formSubmitFunc(true) :
             toast("Na isti napravi je dovoljenih največ 5 uspešnih oddaj, zato je nova forma blokirana. Morda poskusite menjati napravo.")
     }
 
     return {
         schoolTier,
-        schoolsByTier,
         educationTier,
         submit,
-        formalize,
         setEducationTier,
         getSchoolPrograms,
         checkFormSubmitions,

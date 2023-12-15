@@ -37,7 +37,7 @@ export default function SelectRadio(
 
             <div
                 id={name + "Selected"}
-                class={"selector flex"}
+                class={"selector flex actMouse"}
                 onClick={() => disableTillClicked()}>
                 {selected ? selected : describe}
                 <ArrowUp id={name + "Arrow"} group="formArrow" up={!open} />
@@ -74,7 +74,7 @@ export default function SelectRadio(
                 </label>
                 {selection.map((option) => {
                     return (
-                        <label class={"option block"}>
+                        <label class={"option block actMouse"}>
                             <input
                                 checked={selected === option ? true : false}
                                 name={name}

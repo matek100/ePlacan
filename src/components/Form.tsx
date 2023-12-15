@@ -29,7 +29,7 @@ export default function Form(
             <form
                 id="form"
                 class={"colFlex"}
-                onSubmit={(e) => submit(e)}>
+                onSubmit={(e) => submit(e, setOpen)}>
 
                 <label class={"formInput colFlex"}>
                     <span>Naziv poklica</span>
@@ -37,7 +37,7 @@ export default function Form(
                         name="job-input"
                         type={"text"}
                         class={"formInputField "}
-                        placeholder={"Primer: Pomočnik čistilke"}
+                        placeholder={"Primer: Strojevodja"}
                         autocomplete={"off"}
                         required>
                     </input>
@@ -49,7 +49,7 @@ export default function Form(
                         name="time-input"
                         type={"number"}
                         class={"formInputField"}
-                        placeholder={"Navadni: 8 ur x 5 = 40 ur"}
+                        placeholder={"8 ur x 5 = 40 ur"}
                         autocomplete={"off"}
                         required>
                     </input>
@@ -111,40 +111,43 @@ export default function Form(
                     id="formBtnBox"
                     class={"colFlex"}>
                     <button
+                        class={"formBtn"}
                         type={"button"}
                         onClick={() => setOpen(false)}>
                         Prekliči
                     </button>
                     <button
+                        class={"formBtn"}
                         type={"reset"}>
                         Izprazni
                     </button>
                     <button
+                        class={"formBtn"}
                         type={"submit"}>
                         Deli
                     </button>
+                    <a
+                        class={"colFlex"}
+                        href={"https://www.nlb.si/menjalnica/"}
+                        target="_blank">
+                        <button
+                            type={"button"}
+                            class={"linkToOutside"}>
+                            Link do pretvornika valut na NLB.si
+                        </button>
+                    </a>
+                    <a
+                        class={"colFlex"}
+                        href={"https://data.si/izracun-place/"}
+                        target="_blank">
+                        <button
+                            type={"button"}
+                            class={"linkToOutside"}>
+                            Link do informativnega izračuna plače na DATA.si
+                        </button>
+                    </a>
                 </div>
 
-                <a
-                    class={"colFlex"}
-                    href={"https://www.nlb.si/menjalnica/"}
-                    target="_blank">
-                    <button
-                        type={"button"}
-                        class={"linkToOutside"}>
-                        Link do pretvornika valut na NLB.si
-                    </button>
-                </a>
-                <a
-                    class={"colFlex"}
-                    href={"https://data.si/izracun-place/"}
-                    target="_blank">
-                    <button
-                        type={"button"}
-                        class={"linkToOutside"}>
-                        Link do informativnega izračuna plače na DATA.si
-                    </button>
-                </a>
             </form>
 
         </>

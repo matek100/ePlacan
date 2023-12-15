@@ -1,7 +1,12 @@
 import { Link } from "preact-router/match"
 import "./onas.css";
+import usePlacanStore from "../usePlacanStore";
+import useLocalStorage from "../utils/useLocalStorage";
 
 export default function ONas() {
+
+    const { formSubmitedTimes, updateFormSubmitedTimes } = usePlacanStore();
+    const { storeData } = useLocalStorage();
 
     return (<>
 
@@ -25,6 +30,30 @@ export default function ONas() {
         <section id="promoBox" class={"flex"}>
             <img class="logo" src="ePlacan_Logo.png" alt="ePlačan Logo" />
             <img class="logo" src="Pirati_znak.png" alt="Piratska stranka Logo" />
+        </section>
+
+        <section
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 10,
+                margin: 20,
+                border: "3px solid black",
+                padding: 15,
+            }}>
+            <button onClick={() => {
+                storeData("formJobDataCollected", 0);
+                updateFormSubmitedTimes(0);
+            }}>
+                Reset btn
+            </button>
+            <span>
+                Število oddanih form:
+            </span>
+            <span>
+                {formSubmitedTimes}
+            </span>
         </section>
     </>)
 }
