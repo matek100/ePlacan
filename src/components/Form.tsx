@@ -94,8 +94,8 @@ export default function Form(
                     class={"formInput colFlex"}
                     style={
                         educationTier &&
-                            educationTier !== "- brez šole -" &&
-                            educationTier !== "1. bolonska" ?
+                            educationTier !== "1. bolonska" &&
+                            educationTier !== "2. bolonska" ?
                             { visibility: "visible" } :
                             { visibility: "hidden", position: "absolute" }
                     }>

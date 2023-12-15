@@ -6,39 +6,44 @@ import toast from "react-hot-toast";
 export default function useForm() {
 
     const schoolTier = [
-        "- brez šole -",
         "1. bolonska",
         "2. bolonska",
         "3. bolonska",
         "4. bolonska",
-        "5. bolonska"
+        "5. bolonska",
+        "6. bolonska",
+        "7. bolonska",
     ]
 
     const schoolsByTier = [
-        {
-            tier: 0,
-            list: ["brez"]
-        },
         {
             tier: 1,
             list: ["osnovna šola"]
         },
         {
             tier: 2,
-            list: ["gimnazija", "srednja šola"]
+            list: ["nižje poklicno"]
         },
         {
             tier: 3,
-            list: ["višja šola", "fakulteta"]
+            list: ["srednje poklicno"]
         },
         {
             tier: 4,
-            list: ["magisterski programi"]
+            list: ["gimnazija"]
         },
         {
             tier: 5,
-            list: ["doktorski programi"]
-        }
+            list: ["višja šola"]
+        },
+        {
+            tier: 6,
+            list: ["fakulteta"]
+        },
+        {
+            tier: 7,
+            list: ["magisterski programi", "doktorski programi"]
+        },
     ]
 
     const {
@@ -56,19 +61,17 @@ export default function useForm() {
             case "3. bolonska": return schoolsByTier[3].list;
             case "4. bolonska": return schoolsByTier[4].list;
             case "5. bolonska": return schoolsByTier[5].list;
+            case "6. bolonska": return schoolsByTier[6].list;
+            case "7. bolonska": return schoolsByTier[7].list;
             default: return [];
         }
     }
 
     const formalize = (arr: any, drop1: string, drop2: string) => {
-        const schoolTierNumber = drop1[0] !== "-" ?
-            Number(drop1[0]) :
-            0;
-        const schoolCorrected = schoolTierNumber === 0 ?
-            "Brez" :
-            schoolTierNumber === 1 ?
-                "Osnovna šola" :
-                drop2;
+        const schoolTierNumber = Number(drop1[0]);
+        const schoolCorrected = schoolTierNumber === 1 ?
+            "Osnovna šola" :
+            drop2;
 
         const payRaw: number = arr["pay-input"].value;
         const payProcessed = payRaw.toString().split("");
@@ -97,13 +100,11 @@ export default function useForm() {
         if (htmlArr) {
             const schoolTier = htmlArr.schoolTier.value ? htmlArr.schoolTier.value : "";
             let school = htmlArr.school.value ? htmlArr.school.value : "";
-            school = schoolTier === "- brez šole -" ?
-                "Brez" :
-                schoolTier === "1. bolonska" ?
-                    "Osnovna šola" :
-                    school !== "" ?
-                        school :
-                        "";
+            school = schoolTier === "1. bolonska" ?
+                "Osnovna šola" :
+                school !== "" ?
+                    school :
+                    "";
 
             if (!schoolTier) {
                 toast.error("Manjka DOSEŽENA IZOBRAZBA.");
@@ -120,7 +121,8 @@ export default function useForm() {
     const checkFormSubmitions = (
         func: (newState: boolean) => void
     ) => {
-        formSubmitedTimes < 6 ?
+        {/*SPREMENI NA 5 OB ZAKLJUČKU PROJEKTA*/ }
+        formSubmitedTimes < 999 ?
             func(true) :
             toast("Na isti napravi je dovoljenih največ 5 uspešnih oddaj, zato je nova forma blokirana. Morda poskusite menjati napravo.")
     }
