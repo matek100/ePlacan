@@ -25,6 +25,20 @@ export default function Filter() {
 
     const [keepArrData, setKeepArrData] = useState(true);
 
+    const tierBtn = (btnNum: number) => {
+        return <button
+            class={"schoolTierBtn"}
+            style={{
+                backgroundColor: activeSchoolTiers[btnNum - 1].status ? "" : "rgba(26, 26, 26, 0.8)"
+            }}
+            onClick={() => {
+                changeSchoolTierStatus(btnNum);
+                schoolTierFilter();
+            }}>
+            {btnNum}
+        </button>
+    }
+
     return filter ? (
         <div id="filterPosition">
             <div id="filterBox">
@@ -93,98 +107,17 @@ export default function Filter() {
                 {filter === "school" ?
                     <>
                         <div class={"filterSchoolTierBtns flex"}>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[0].status ? "" : "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(1);
-                                    schoolTierFilter();
-                                }}>
-                                1
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[1].status ? "" : "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(2);
-                                    schoolTierFilter();
-                                }}>
-                                2
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[2].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(3);
-                                    schoolTierFilter();
-                                }}>
-                                3
-                            </button>
+                            {tierBtn(1)}
+                            {tierBtn(2)}
+                            {tierBtn(3)}
                         </div>
                         <div class={"filterSchoolTierBtns flex"}>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[3].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(4);
-                                    schoolTierFilter();
-                                }}>
-                                4
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[4].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(5);
-                                    schoolTierFilter();
-                                }}>
-                                5
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[5].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(6);
-                                    schoolTierFilter();
-                                }}>
-                                6
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[6].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(7);
-                                    schoolTierFilter();
-                                }}>
-                                7
-                            </button>
+                            {tierBtn(4)}
+                            {tierBtn(5)}
+                            {tierBtn(6)}
+                            {tierBtn(7)}
                         </div>
                         <span class={"colFlex"}>
-
                             <input
                                 id="schoolFilterInput"
                                 class={"filterInput"}

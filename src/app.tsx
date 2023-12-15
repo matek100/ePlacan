@@ -1,7 +1,7 @@
 import { useEffect } from 'preact/hooks';
 import { Toaster } from 'react-hot-toast';
 import useLocalStorage from './utils/useLocalStorage';
-import Router from 'preact-router';
+import Router, { Route } from 'preact-router';
 import EPlacan from './routes/EPlacan';
 import ONas from './routes/ONas';
 import usePlacanStore from './usePlacanStore';
@@ -29,9 +29,8 @@ export function App() {
 
       <Router>
 
-        <EPlacan path="/" />
-
-        <ONas path="/piratska-stranka" />
+        <Route path="/" component={EPlacan} />
+        <Route path="/piratska-stranka" component={ONas} />
 
         <div default>
           <h3>Ta stran na tej domeni ne obstaja.</h3>
