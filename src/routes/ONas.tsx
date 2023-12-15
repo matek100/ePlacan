@@ -1,18 +1,19 @@
-import { useEffect } from "preact/hooks";
-import usePlacanStore from "../usePlacanStore";
+import { Link } from "preact-router/match"
 import "./onas.css";
 
-export default function ONas(
-    { path }: { path: string }
-) {
-
-    const { setLoc } = usePlacanStore();
-
-    useEffect(() => {
-        setLoc(path)
-    }, []);
+export default function ONas() {
 
     return (<>
+
+        <nav class={"nav colFlex"}>
+            <h1 class={"defMouse"}>Piratski program</h1>
+            <Link
+                class={"navBtn"}
+                href="/">
+                ePlačan
+            </Link>
+        </nav>
+
         <section id="explainBox" class={"defMouse"}>
             <p>ePlačan je namenjen spodbujanju deljenja informacij o prejetem plačilu za opravljeno delo, še posebno med mladimi.</p>
             <p>Informirani smo sposobnejši oceniti stanje na trgu dela, recimo če smo za delo ustrezno plačani.</p>

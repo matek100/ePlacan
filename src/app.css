@@ -5,13 +5,13 @@
     padding: 0 30px 75px;
 }
 
-#nav {
+.nav {
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.nav-btn {
+.navBtn {
     font-size: 1.5rem;
 }
 
