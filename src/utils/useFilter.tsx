@@ -12,12 +12,13 @@ export default function useFilter() {
 
     const [filter, setFilter] = useState<Filters | null>(null);
     const [activeSchoolTiers, setActiveSchoolTiers] = useState([
-        { id: 0, status: true },
         { id: 1, status: true },
         { id: 2, status: true },
         { id: 3, status: true },
         { id: 4, status: true },
-        { id: 5, status: true }
+        { id: 5, status: true },
+        { id: 6, status: true },
+        { id: 7, status: true }
     ]);
 
     // FILTERS
@@ -73,7 +74,6 @@ export default function useFilter() {
         type: "job" | "school", regArr: string[], keepData?: boolean
     ) => {
         const arr = keepData ? shownData : backup;
-        console.log(type, keepData, regArr)
         const filtered = arr.filter(
             (data) => {
                 const extract = data[type].toUpperCase();
@@ -126,14 +126,14 @@ export default function useFilter() {
     {/*POSODOBI STATUS AKTIVNIH BOLONSKIH STOPENJ*/ }
     const changeSchoolTierStatus = (tier: number) => {
         let newArr = [...activeSchoolTiers];
-        newArr[tier].status = !newArr[tier].status;
+        newArr[tier - 1].status = !newArr[tier - 1].status;
         setActiveSchoolTiers(newArr);
     }
 
     {/*FILTRIRAJ GLEDE NA AKTIVNE BOLONSKE STOPNJE*/ }
     const schoolTierFilter = () => {
         const filtered = backup.filter((data) =>
-            activeSchoolTiers[data.schoolTier].status
+            activeSchoolTiers[data.schoolTier - 1].status
         );
         setShownData(filtered);
     }

@@ -85,13 +85,9 @@
     gap: 5px;
 }
 
-#persistDataBtn {
-    width: 100%;
-}
-
 .filterSubmitBtn {
     width: 100%;
-    font-size: 1.2em;
+    font-size: 1.3em;
     border-radius: 0 0 8px 8px;
 }
 

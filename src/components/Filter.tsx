@@ -99,10 +99,10 @@ export default function Filter() {
                                     backgroundColor: activeSchoolTiers[0].status ? "" : "rgba(26, 26, 26, 0.8)"
                                 }}
                                 onClick={() => {
-                                    changeSchoolTierStatus(0);
+                                    changeSchoolTierStatus(1);
                                     schoolTierFilter();
                                 }}>
-                                0
+                                1
                             </button>
                             <button
                                 class={"schoolTierBtn"}
@@ -110,10 +110,10 @@ export default function Filter() {
                                     backgroundColor: activeSchoolTiers[1].status ? "" : "rgba(26, 26, 26, 0.8)"
                                 }}
                                 onClick={() => {
-                                    changeSchoolTierStatus(1);
+                                    changeSchoolTierStatus(2);
                                     schoolTierFilter();
                                 }}>
-                                1
+                                2
                             </button>
                             <button
                                 class={"schoolTierBtn"}
@@ -123,10 +123,10 @@ export default function Filter() {
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
                                 onClick={() => {
-                                    changeSchoolTierStatus(2);
+                                    changeSchoolTierStatus(3);
                                     schoolTierFilter();
                                 }}>
-                                2
+                                3
                             </button>
                         </div>
                         <div class={"filterSchoolTierBtns flex"}>
@@ -134,19 +134,6 @@ export default function Filter() {
                                 class={"schoolTierBtn"}
                                 style={{
                                     backgroundColor: activeSchoolTiers[3].status ?
-                                        "" :
-                                        "rgba(26, 26, 26, 0.8)"
-                                }}
-                                onClick={() => {
-                                    changeSchoolTierStatus(3);
-                                    schoolTierFilter();
-                                }}>
-                                3
-                            </button>
-                            <button
-                                class={"schoolTierBtn"}
-                                style={{
-                                    backgroundColor: activeSchoolTiers[4].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
@@ -159,7 +146,7 @@ export default function Filter() {
                             <button
                                 class={"schoolTierBtn"}
                                 style={{
-                                    backgroundColor: activeSchoolTiers[5].status ?
+                                    backgroundColor: activeSchoolTiers[4].status ?
                                         "" :
                                         "rgba(26, 26, 26, 0.8)"
                                 }}
@@ -168,6 +155,32 @@ export default function Filter() {
                                     schoolTierFilter();
                                 }}>
                                 5
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[5].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(6);
+                                    schoolTierFilter();
+                                }}>
+                                6
+                            </button>
+                            <button
+                                class={"schoolTierBtn"}
+                                style={{
+                                    backgroundColor: activeSchoolTiers[6].status ?
+                                        "" :
+                                        "rgba(26, 26, 26, 0.8)"
+                                }}
+                                onClick={() => {
+                                    changeSchoolTierStatus(7);
+                                    schoolTierFilter();
+                                }}>
+                                7
                             </button>
                         </div>
                         <span class={"colFlex"}>
@@ -241,8 +254,11 @@ export default function Filter() {
 
                 <button
                     id="persistDataBtn"
+                    class={"colFlex"}
                     onClick={() => setKeepArrData(!keepArrData)}>
-                    {keepArrData ? "Uporabi trenutni seznam" : "Uporabi celotni seznam"}
+                    {keepArrData ?
+                        "Uporabi trenutni seznam" :
+                        "Uporabi celotni seznam"}
                 </button>
 
                 <button

@@ -3,7 +3,7 @@ type Data = {
     ip: number,
     job: string,
     school: string,
-    schoolTier: 0 | 1 | 2 | 3 | 4 | 5,
+    schoolTier: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     years: number,
     hours: number,
     pay: number
@@ -11,7 +11,6 @@ type Data = {
 
 type Filters =
     "id" |
-    "ip" |
     "job" |
     "hours" |
     "school" |
