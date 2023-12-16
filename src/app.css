@@ -1,7 +1,7 @@
 #app {
     align-items: center;
     width: 100%;
-    padding: 0 30px 75px;
+    padding: 0 25px 75px;
 }
 
 .nav {
@@ -11,6 +11,68 @@
 
 .navBtn {
     font-size: 1.8em;
+}
+
+h1 {
+    font-size: 2.4em;
+    text-align: center;
+    line-height: 1.1;
+}
+
+p {
+    font-size: 1.4em;
+}
+
+input {
+    outline: none;
+}
+
+input[type="text"],
+input[type="number"] {
+    letter-spacing: 0.05em;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input::placeholder {
+    font-family: "Open Sans";
+    font-weight: 700;
+}
+
+a {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: inherit;
+    transition: 0.25s;
+}
+
+a:hover {
+    color: orange;
+}
+
+button {
+    font-family: "Open Sans";
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    color: orange;
+    border-color: orange;
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 /*GENERIC CSS TYPES*/

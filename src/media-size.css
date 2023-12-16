@@ -1,30 +1,100 @@
 /* xs */
-@media (min-width: 360px) {
-    .container {
-        max-width: 360px;
-    }
-
-}
+@media (min-width: 360px) {}
 
 @media (min-width: 475px) {
-    .container {
-        max-width: 475px;
+
+    #app {
+        padding: 0 40px 75px;
+    }
+
+    h1 {
+        font-size: 2.7em;
+        margin-bottom: 30px;
+    }
+
+    .navBtn {
+        font-size: 2.1em;
+    }
+
+    caption {
+        font-size: 1.4em;
+    }
+
+    #persistDataBtn {
+        font-size: 1.1em;
+    }
+
+    #longTable {
+        max-width: 425px;
+    }
+
+    #explainBox p {
+        font-size: 1.5em;
+    }
+
+    #promoBox {
+        max-width: 450px;
+    }
+
+    #shareInfoBtn {
+        font-size: 1.3em;
+    }
+
+    #form {
+        max-width: 500px;
+    }
+
+    .formInputTitle {
+        font-size: 1.1em;
+    }
+
+    #formBtnBox {
+        align-self: center;
+        align-items: center;
+    }
+
+    .formBtn {
+        font-size: 1.2em;
+        width: 300px;
+    }
+
+    .linkToOutside {
+        width: 300px;
     }
 }
 
 /* sm */
 @media (min-width: 640px) {
-    .container {
-        max-width: 640px;
+    #explainBox p {
+        max-width: 550px;
+    }
+
+    #longTable {
+        display: none;
+    }
+
+    #wideTable {
+        display: block;
+    }
+
+    #formBtnBox div {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+    }
+
+    #formBtnBox a {
+        width: calc(50% - 6px);
+    }
+
+    .linkToOutside {
+        height: 140px;
+        width: 100%;
     }
 }
 
 /* md */
-@media (min-width: 768px) {
-    .container {
-        max-width: 768px;
-    }
-}
+@media (min-width: 768px) {}
 
 /* lg */
 @media (min-width: 1024px) {}

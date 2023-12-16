@@ -32,7 +32,9 @@ export default function Form(
                 onSubmit={(e) => submit(e, setOpen)}>
 
                 <label class={"formInput colFlex"}>
-                    <span>Naziv poklica</span>
+                    <span class={"formInputTitle"}>
+                        Naziv poklica
+                    </span>
                     <input
                         name="job-input"
                         type={"text"}
@@ -44,7 +46,9 @@ export default function Form(
                 </label>
 
                 <label class={"formInput colFlex"}>
-                    <span>Povprečje ur na teden</span>
+                    <span class={"formInputTitle"}>
+                        Povprečje ur na teden
+                    </span>
                     <input
                         name="time-input"
                         type={"number"}
@@ -56,7 +60,9 @@ export default function Form(
                 </label>
 
                 <label class={"formInput colFlex"}>
-                    <span>Mesečni prihodek</span>
+                    <span class={"formInputTitle"}>
+                        Mesečni prihodek
+                    </span>
                     <input
                         name="pay-input"
                         type={"number"}
@@ -68,7 +74,9 @@ export default function Form(
                 </label>
 
                 <label class={"formInput colFlex"}>
-                    <span>Leta izkušenj</span>
+                    <span class={"formInputTitle"}>
+                        Leta izkušenj
+                    </span>
                     <input
                         name="years-input"
                         type={"number"}
@@ -81,7 +89,9 @@ export default function Form(
 
                 <label
                     class={"formInput colFlex"}>
-                    <span>Dosežena izobrazba</span>
+                    <span class={"formInputTitle"}>
+                        Dosežena izobrazba
+                    </span>
                     <SelectRadio
                         name="schoolTier"
                         describe="Stopnja izobrazbe"
@@ -99,7 +109,9 @@ export default function Form(
                             { visibility: "visible" } :
                             { visibility: "hidden", position: "absolute" }
                     }>
-                    <span>Izobraževalni program</span>
+                    <span class={"formInputTitle"}>
+                        Izobraževalni program
+                    </span>
                     <SelectRadio
                         name="school"
                         describe="Vrsta programa"
@@ -110,42 +122,46 @@ export default function Form(
                 <div
                     id="formBtnBox"
                     class={"colFlex"}>
-                    <button
-                        class={"formBtn"}
-                        type={"button"}
-                        onClick={() => setOpen(false)}>
-                        Prekliči
-                    </button>
-                    <button
-                        class={"formBtn"}
-                        type={"reset"}>
-                        Izprazni
-                    </button>
-                    <button
-                        class={"formBtn"}
-                        type={"submit"}>
-                        Deli
-                    </button>
-                    <a
-                        class={"colFlex"}
-                        href={"https://www.nlb.si/menjalnica/"}
-                        target="_blank">
+                    <div>
                         <button
+                            class={"formBtn colFlex"}
                             type={"button"}
-                            class={"linkToOutside"}>
-                            Link do pretvornika valut na NLB.si
+                            onClick={() => setOpen(false)}>
+                            Prekliči
                         </button>
-                    </a>
-                    <a
-                        class={"colFlex"}
-                        href={"https://data.si/izracun-place/"}
-                        target="_blank">
                         <button
-                            type={"button"}
-                            class={"linkToOutside"}>
-                            Link do informativnega izračuna plače na DATA.si
+                            class={"formBtn colFlex"}
+                            type={"reset"}>
+                            Izprazni
                         </button>
-                    </a>
+                        <button
+                            class={"formBtn colFlex"}
+                            type={"submit"}>
+                            Deli
+                        </button>
+                    </div>
+                    <div>
+                        <a
+                            class={"colFlex"}
+                            href={"https://www.nlb.si/menjalnica/"}
+                            target="_blank">
+                            <button
+                                type={"button"}
+                                class={"linkToOutside"}>
+                                Link do pretvornika valut na NLB.si
+                            </button>
+                        </a>
+                        <a
+                            class={"colFlex"}
+                            href={"https://data.si/izracun-place/"}
+                            target="_blank">
+                            <button
+                                type={"button"}
+                                class={"linkToOutside"}>
+                                Link do informativnega izračuna plače na DATA.si
+                            </button>
+                        </a>
+                    </div>
                 </div>
 
             </form>

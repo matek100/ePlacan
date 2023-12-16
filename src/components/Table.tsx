@@ -2,6 +2,8 @@ import { useEffect } from "preact/hooks";
 import { Data } from "../type"
 import usePlacanStore from "../usePlacanStore";
 import useFilter from "../utils/useFilter";
+import LongTable from "./LongTable";
+import WideTable from "./WideTable";
 import "./table.css";
 
 export default function Table(
@@ -78,7 +80,6 @@ export default function Table(
         shownData,
         setShownData,
         setBackup,
-        setFilter,
     } = usePlacanStore();
 
     const { sortForward, sortBackward } = useFilter();
@@ -107,162 +108,9 @@ export default function Table(
 
     return !formOpen ? (<>
 
-        <table id="wideTable">
-            <caption>Seznam deljenih plačnih razmerij</caption>
-            <thead id="tableBox">
-                <tr>
-                    <th
-                        class={"actMouse"}
-                        onClick={() => setFilter("job")}>
-                        Naziv
-                    </th>
-                    <th
-                        class={"actMouse"}
-                        onClick={() => setFilter("hours")}>
-                        Ure
-                    </th>
-                    <th
-                        class={"actMouse"}
-                        onClick={() => setFilter("school")}>
-                        Izobrazba
-                    </th>
-                    <th
-                        class={"actMouse"}
-                        onClick={() => setFilter("years")}>
-                        Leta
-                    </th>
-                    <th
-                        class={"actMouse"}
-                        onClick={() => setFilter("pay")}>
-                        Plača
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {shownData.map(
-                    (info) => {
-                        return (
-                            <tr>
-                                <td>{info.job}</td>
-                                <td>{info.hours}</td>
-                                <td>
-                                    <span class={"block"}>
-                                        {info.schoolTier + ". bol"}
-                                    </span>
-                                    <span class={"block"}>
-                                        {info.school}
-                                    </span>
-                                </td>
-                                <td>{info.years}</td>
-                                <td>{info.pay}</td>
-                            </tr>
-                        )
-                    })}
-            </tbody>
-        </table>
+        <LongTable />
 
-        <table id="longTable">
-            <caption class={"defMouse"}>Seznam deljenih plačnih razmerij</caption>
-            <thead id="tableBox" class={"defMouse"}>
-                <tr>
-                    <th>Info Tip</th>
-                    <th>Info</th>
-                </tr>
-            </thead>
-            <tbody>
-                {shownData.map(
-                    (info) => {
-                        return (
-                            <>
-                                <tr class={"infoRow"}>
-                                    <td
-                                        class={"filterOpenBtn infoCell actMouse"}
-                                        onClick={() => setFilter("job")}>
-                                        Naziv
-                                    </td>
-                                    <td class={"infoCell"}>{info.job}</td>
-                                </tr>
-
-                                <tr class={"infoRow"}>
-                                    <td
-                                        class={"infoCell actMouse"}>
-                                        <span
-                                            class={"filterOpenBtn"}
-                                            onClick={() => setFilter("hours")}>
-                                            Ure
-                                        </span>
-                                        {" | "}
-                                        <span
-                                            class={"filterOpenBtn"}
-                                            onClick={() => setFilter("years")}>
-                                            Leta
-                                        </span>
-                                    </td>
-                                    <td class={"infoCell"}>
-                                        {info.hours} ur | {info.years} let{
-                                            info.years === 1 ?
-                                                "o" :
-                                                info.years === 2 ?
-                                                    "i" :
-                                                    info.years === 3 || info.years === 4 ?
-                                                        "a" :
-                                                        ""
-                                        }
-                                    </td>
-                                </tr>
-
-                                <tr class={"infoRow"}>
-                                    <td
-                                        class={"filterOpenBtn infoCell actMouse"}
-                                        onClick={() => setFilter("school")}>
-                                        Izobrazba
-                                    </td>
-                                    <td class={"infoCell"}>
-                                        <span class={"block"}>
-                                            {info.schoolTier + ". bol"}
-                                        </span>
-                                        <span class={"block"}>
-                                            {info.school}
-                                        </span>
-                                    </td>
-                                </tr>
-
-                                <tr class={"infoRow"}>
-                                    <td
-                                        class={" filterOpenBtn infoCell actMouse"}
-                                        onClick={() => setFilter("pay")}>
-                                        Plača
-                                    </td>
-                                    <td class={"infoCell"}>
-                                        {
-                                            info.pay
-                                                .toString()
-                                                .split("")
-                                                .reverse()
-                                                .map((number, index) => {
-                                                    return (
-                                                        index % 3 === 0 &&
-                                                            index !== 0 ?
-                                                            number + "." :
-                                                            number
-                                                    )
-                                                })
-                                                .reverse()
-                                                .join("")
-                                        } €
-                                    </td>
-                                </tr>
-
-                                {/*TA VRSTICA TABELO UKANE, DA NAREDI LINIJO*/}
-                                <tr class={"rowUndeline"}>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </>
-                        )
-                    })}
-            </tbody>
-        </table>
+        <WideTable />
 
         {shownData.length < 1 ?
             <button
@@ -275,7 +123,8 @@ export default function Table(
         <button
             id="upBtn"
             onClick={() => moveToTop()}>
-            To the top
+            Vrh strani
         </button>
-    </>) : <></>
+    </>) :
+        <></>
 }

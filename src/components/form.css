@@ -3,11 +3,13 @@
 #shareInfoBtn {
     font-size: 1.2em;
     margin: 30px auto 25px;
+    padding: 15px 20px;
 }
 
 /*FORM*/
 
 #form {
+    width: 100%;
     font-family: "Open Sans";
     font-weight: 600;
     font-size: 1.3em;
@@ -41,17 +43,23 @@
 }
 
 #formBtnBox {
-    gap: 12px;
     width: 100%;
-    margin-top: 5px;
+}
+
+#formBtnBox div {
+    margin-top: -6px;
 }
 
 .formBtn {
+    align-items: center;
+    width: 100%;
     font-size: 1.1em;
+    margin: 12px 0;
 }
 
 .linkToOutside {
     font-size: 0.8em;
+    margin: 6px 0;
     box-shadow: inset 0 0 2px 3px red;
 }
 
