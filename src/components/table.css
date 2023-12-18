@@ -1,5 +1,4 @@
 table {
-    width: 100%;
     font-size: 1.2em;
     border-collapse: collapse;
 }
@@ -10,56 +9,70 @@ caption {
     margin: 0 auto 15px;
 }
 
-#longTable th {
-    font-size: 1.1em;
-    text-align: left;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    transition: 1s;
-}
-
-#longTable th:nth-of-type(1) {
-    padding-left: 20px;
-}
-
-#longTable th:nth-of-type(2) {
-    padding-right: 20px;
-}
-
 .rowUndeline {
     height: 1px;
     width: 100%;
     background-color: black;
 }
 
+/*TABELA VELIKIH ZASLONOV*/
+
 #wideTable {
     display: none;
+    width: 100%;
+}
+
+#wideTable th {
+    font-size: 1.1em;
+    border-bottom: 3px solid black;
+    padding: 15px 5px;
+    transition: 0.25s;
+}
+
+#wideTable th:first-of-type,
+#wideTable td:first-of-type {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#wideTable th:last-of-type,
+#wideTable td:last-of-type {
+    text-align: right;
+    padding-right: 10px;
 }
 
 #wideTable th:hover {
     color: orange;
 }
 
-#wideTable th:nth-of-type(2) {
-    text-align: center;
-}
-
-#wideTable th:last-of-type {
-    text-align: right;
-}
-
 #wideTable td {
+    font-size: 1.1em;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    padding: 6px 20px 10px;
+    line-height: 1.3;
+    border-bottom: 2px solid black;
+    padding: 10px 5px;
 }
 
-#wideTable td:nth-of-type(1) {
-    text-align: left;
+/*TABELA MALIH ZASLONOV*/
+
+#longTable {
+    width: 100%;
 }
 
-#wideTable td:last-of-type {
-    text-align: right;
+#longTable th {
+    font-size: 1.1em;
+    border-bottom: 3px solid black;
+    padding: 10px;
+}
+
+#longTable th:first-of-type {
+    text-align: start;
+    padding-left: 20px;
+}
+
+#longTable th:last-of-type {
+    text-align: end;
+    padding-right: 20px;
 }
 
 #longTable td {
@@ -74,31 +87,24 @@ caption {
     color: orange;
 }
 
-#longTable th:nth-of-type(1) {
-    text-align: start;
-    border-bottom: 3px solid black;
-}
-
-#longTable th:nth-of-type(2) {
-    text-align: end;
-    border-bottom: 3px solid black;
-}
-
 .infoRow {
     border-bottom: 1px solid black;
 }
 
 .infoCell {
+    line-height: 1.5;
     padding: 5px 15px 8px;
 }
 
-.infoCell:nth-of-type(1) {
+.infoCell:first-of-type {
     font-weight: 600;
 }
 
-.infoCell:nth-of-type(2) {
+.infoCell:last-of-type {
     text-align: end;
 }
+
+/*DODATNO*/
 
 #emptyTableBtn {
     margin-top: 20px;

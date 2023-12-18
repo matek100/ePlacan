@@ -5,18 +5,22 @@ export default function LongTable() {
 
     const {
         shownData,
+        removedData,
         setFilter,
     } = usePlacanStore();
 
     return (
         <table id="longTable">
+
             <caption class={"defMouse"}>Seznam deljenih plačnih razmerij</caption>
+
             <thead id="tableBox" class={"defMouse"}>
                 <tr>
                     <th>Info Tip</th>
                     <th>Info</th>
                 </tr>
             </thead>
+
             <tbody>
                 {shownData.map(
                     (info) => {
@@ -28,7 +32,9 @@ export default function LongTable() {
                                         onClick={() => setFilter("job")}>
                                         Naziv
                                     </td>
-                                    <td class={"infoCell"}>{info.job}</td>
+                                    <td class={"infoCell"}>
+                                        {!removedData["job"] ? info.job : ""}
+                                    </td>
                                 </tr>
 
                                 <tr class={"infoRow"}>
@@ -47,15 +53,17 @@ export default function LongTable() {
                                         </span>
                                     </td>
                                     <td class={"infoCell"}>
-                                        {info.hours} ur | {info.years} let{
-                                            info.years === 1 ?
+                                        {`${!removedData["hours"] ? info.hours + " ur" : ""}
+                                        ${!removedData["hours"] && !removedData["years"] ? " | " : ""}
+                                        ${!removedData["years"] ? `${info.years} let${info.years === 1 ?
                                                 "o" :
                                                 info.years === 2 ?
                                                     "i" :
                                                     info.years === 3 || info.years === 4 ?
                                                         "a" :
-                                                        ""
-                                        }
+                                                        ""}`
+                                                : ""}
+                                        `}
                                     </td>
                                 </tr>
 
@@ -66,18 +74,22 @@ export default function LongTable() {
                                         Izobrazba
                                     </td>
                                     <td class={"infoCell"}>
-                                        <span class={"block"}>
-                                            {info.schoolTier + ". bol"}
-                                        </span>
-                                        <span class={"block"}>
-                                            {info.school}
-                                        </span>
+                                        {!removedData["schoolTier"] ?
+                                            <span class={"block"}>
+                                                {info.schoolTier + ". bol"}
+                                            </span> :
+                                            <></>}
+                                        {!removedData["school"] ?
+                                            <span class={"block"}>
+                                                {info.school}
+                                            </span> :
+                                            <></>}
                                     </td>
                                 </tr>
 
                                 <tr class={"infoRow"}>
                                     <td
-                                        class={" filterOpenBtn infoCell actMouse"}
+                                        class={"filterOpenBtn infoCell actMouse"}
                                         onClick={() => setFilter("pay")}>
                                         Plača
                                     </td>
@@ -110,6 +122,7 @@ export default function LongTable() {
                         )
                     })}
             </tbody>
+
         </table>
     )
 }

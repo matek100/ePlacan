@@ -29,6 +29,13 @@ input {
 
 input[type="text"],
 input[type="number"] {
+    letter-spacing: 0.1em;
+    font-family: "Open Sans";
+    font-weight: 600;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
     letter-spacing: 0.05em;
 }
 

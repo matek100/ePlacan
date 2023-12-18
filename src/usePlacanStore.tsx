@@ -1,12 +1,23 @@
 import { create } from 'zustand';
 import { Data, Filters } from './type';
 
+type RemoveData = {
+    id: boolean,
+    job: boolean,
+    hours: boolean,
+    schoolTier: boolean,
+    school: boolean,
+    years: boolean,
+    pay: boolean,
+}
+
 type State = {
     filter: Filters | null,
     shownData: Data[],
     backup: Data[],
     formSubmitedTimes: number,
     loc: string,
+    removedData: RemoveData,
 }
 
 type Action = {
@@ -15,6 +26,7 @@ type Action = {
     setShownData(newState: Data[]): void,
     updateFormSubmitedTimes(newState: number): void,
     setLoc(newState: string): void,
+    setRemovedData(newState: RemoveData): void,
 }
 
 const usePlacanStore = create<State & Action>(set => ({
@@ -40,8 +52,21 @@ const usePlacanStore = create<State & Action>(set => ({
     })),
 
     loc: "/",
-    setLoc: (newState: string) => set(() => ({
+    setLoc: (newState) => set(() => ({
         loc: newState
+    })),
+
+    removedData: {
+        id: false,
+        job: false,
+        hours: false,
+        schoolTier: false,
+        school: false,
+        years: false,
+        pay: false,
+    },
+    setRemovedData: (newState) => set(() => ({
+        removedData: newState
     })),
 }))
 

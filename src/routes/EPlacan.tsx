@@ -24,11 +24,11 @@ export default function EPlacan() {
             setOpen={setFormOpen}
         />
 
+        <Filter />
+
         <Table
             formOpen={formOpen}
         />
-
-        <Filter />
 
     </>)
 }

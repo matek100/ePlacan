@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 import ArrowUp from "../assets/ArrowUp";
 import usePlacanStore from "../usePlacanStore";
-import useComponent from "../utils/useFilter";
+import useFilter from "../utils/useFilter";
 import "./filter.css";
 
 export default function Filter() {
@@ -9,6 +9,7 @@ export default function Filter() {
     const {
         filter,
         backup,
+        removedData,
         setFilter,
         setShownData
     } = usePlacanStore();
@@ -20,8 +21,9 @@ export default function Filter() {
         sortForward,
         sortBackward,
         querryFilter,
-        rangeFilter
-    } = useComponent();
+        rangeFilter,
+        remoteDataType,
+    } = useFilter();
 
     const [keepArrData, setKeepArrData] = useState(true);
 
@@ -40,8 +42,8 @@ export default function Filter() {
     }
 
     return filter ? (
-        <div id="filterPosition">
-            <div id="filterBox">
+        <div id="filterPosition" class={"colFlex"}>
+            <div id="filterBox" class={"colFlex"}>
 
                 <button
                     id="filterExitBtn"
@@ -50,14 +52,14 @@ export default function Filter() {
                     Zapri filter
                 </button>
 
-                <div class={"filterOrientation"}>
+                <div class={"filterOrientation flex"}>
                     <button
-                        class={"downBtn"}
+                        class={"downBtn flex"}
                         onClick={() => setShownData(sortForward(filter, backup))}>
                         <ArrowUp id={"nazivGor"} />
                     </button>
                     <button
-                        class={"upBtn"}
+                        class={"upBtn flex"}
                         onClick={() => setShownData(sortBackward(filter, backup))}>
                         <ArrowUp id={"nazivGor"} up={true} />
                     </button>
@@ -70,6 +72,7 @@ export default function Filter() {
                             class={"filterInput"}
                             type="text"
                             placeholder="Naziv dela"
+                            autocomplete={"off"}
                             maxLength={20}>
                         </input>
                         <button
@@ -87,12 +90,14 @@ export default function Filter() {
                                 id="hoursFilterInputMin"
                                 type="text"
                                 placeholder="Min ur"
+                                autocomplete={"off"}
                                 maxLength={20}>
                             </input>
                             <input
                                 id="hoursFilterInputMax"
                                 type="text"
                                 placeholder="Max ur"
+                                autocomplete={"off"}
                                 maxLength={20}>
                             </input>
                         </span>
@@ -123,6 +128,7 @@ export default function Filter() {
                                 class={"filterInput"}
                                 type="text"
                                 placeholder="Naziv šole"
+                                autocomplete={"off"}
                                 maxLength={20}>
                             </input>
                             <button
@@ -141,12 +147,14 @@ export default function Filter() {
                                 id="yearsFilterInputMin"
                                 type="text"
                                 placeholder="Min let"
+                                autocomplete={"off"}
                                 maxLength={20}>
                             </input>
                             <input
                                 id="yearsFilterInputMax"
                                 type="text"
                                 placeholder="Max let"
+                                autocomplete={"off"}
                                 maxLength={20}>
                             </input>
                         </span>
@@ -167,12 +175,14 @@ export default function Filter() {
                                     id="payFilterInputMin"
                                     type="text"
                                     placeholder="Min €"
+                                    autocomplete={"off"}
                                     maxLength={20}>
                                 </input>
                                 <input
                                     id="payFilterInputMax"
                                     type="text"
                                     placeholder="Max €"
+                                    autocomplete={"off"}
                                     maxLength={20}>
                                 </input>
                             </span>
@@ -186,13 +196,30 @@ export default function Filter() {
                 }
 
                 <button
-                    id="persistDataBtn"
-                    class={"colFlex"}
+                    class={"dataBtn colFlex"}
                     onClick={() => setKeepArrData(!keepArrData)}>
                     {keepArrData ?
                         "Uporabi trenutni seznam" :
                         "Uporabi celotni seznam"}
                 </button>
+
+                <button
+                    class={"dataBtn"}
+                    onClick={() => remoteDataType("schoolTier")}>
+                    {!removedData[filter] ?
+                        `Izloči iz seznama${filter === "school" ? " stopnjo" : ""}` :
+                        `Dodaj v seznam${filter === "school" ? " stopnjo" : ""}`}
+                </button>
+
+                {filter === "school" ?
+                    <button
+                        class={"dataBtn"}
+                        onClick={() => remoteDataType(filter)}>
+                        {!removedData[filter] ?
+                            "Izloči iz seznama šolo" :
+                            "Dodaj v seznam šolo"}
+                    </button> :
+                    <></>}
 
                 <button
                     id="filterResetBtn"

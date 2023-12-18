@@ -7,19 +7,22 @@ export default function useFilter() {
     const {
         backup,
         shownData,
-        setShownData
+        removedData,
+        setShownData,
+        setRemovedData,
     } = usePlacanStore();
 
     const [filter, setFilter] = useState<Filters | null>(null);
     const [activeSchoolTiers, setActiveSchoolTiers] = useState([
-        { id: 1, status: true },
-        { id: 2, status: true },
-        { id: 3, status: true },
-        { id: 4, status: true },
-        { id: 5, status: true },
-        { id: 6, status: true },
-        { id: 7, status: true }
+        { bol: 1, status: true },
+        { bol: 2, status: true },
+        { bol: 3, status: true },
+        { bol: 4, status: true },
+        { bol: 5, status: true },
+        { bol: 6, status: true },
+        { bol: 7, status: true }
     ]);
+
 
     // FILTERS
 
@@ -104,6 +107,7 @@ export default function useFilter() {
         }
     }
 
+    {/*POIŠČI VREDNOSTI MED DVEMA VREDNOSTIMA*/ }
     const rangeFilter = (
         type: "hours" | "years" | "pay", inputId1: string, inputId2: string, keepData?: boolean
     ) => {
@@ -138,6 +142,15 @@ export default function useFilter() {
         setShownData(filtered);
     }
 
+    {/*IZLOČI TIP INFORMACIJE*/ }
+    const remoteDataType = (
+        type: "id" | "job" | "hours" | "schoolTier" | "school" | "years" | "pay"
+    ) => {
+        const data = { ...removedData };
+        data[type] = !data[type];
+        setRemovedData(data);
+    }
+
     return {
         filter,
         activeSchoolTiers,
@@ -147,6 +160,7 @@ export default function useFilter() {
         querryFilter,
         rangeFilter,
         changeSchoolTierStatus,
-        schoolTierFilter
+        schoolTierFilter,
+        remoteDataType,
     }
 }

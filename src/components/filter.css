@@ -1,15 +1,17 @@
 #filterPosition {
-    display: flex;
     justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 #filterBox {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    position: fixed;
-    top: 30%;
+    position: relative;
+    max-width: 80%;
+    gap: 25px;
+    margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 11px;
     padding: 75px 35px 75px 35px;
@@ -18,12 +20,10 @@
 }
 
 .filterOrientation {
-    display: flex;
     gap: 25px;
 }
 
 .filterOrientation button {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 60px;

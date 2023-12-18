@@ -5,12 +5,15 @@ export default function WideTable() {
 
     const {
         shownData,
+        removedData,
         setFilter,
     } = usePlacanStore();
 
     return (
         <table id="wideTable">
+
             <caption>Seznam deljenih plačnih razmerij</caption>
+
             <thead id="tableBox">
                 <tr>
                     <th
@@ -40,27 +43,45 @@ export default function WideTable() {
                     </th>
                 </tr>
             </thead>
+
             <tbody>
                 {shownData.map(
                     (info) => {
                         return (
                             <tr>
-                                <td>{info.job}</td>
-                                <td>{info.hours}</td>
+                                <td>{!removedData["job"] ? info.job : ""}</td>
+                                <td>{!removedData["hours"] ? info.hours : ""}</td>
                                 <td>
-                                    <span class={"block"}>
+                                    {!removedData["schoolTier"] ? <span class={"block"}>
                                         {info.schoolTier + ". bol"}
-                                    </span>
-                                    <span class={"block"}>
+                                    </span> : <></>}
+                                    {!removedData["school"] ? <span class={"block"}>
                                         {info.school}
-                                    </span>
+                                    </span> : <></>}
                                 </td>
-                                <td>{info.years}</td>
-                                <td>{info.pay}</td>
+                                <td>{!removedData["years"] ? info.years : ""}</td>
+                                <td>{!removedData["pay"] ?
+                                    info.pay
+                                        .toString()
+                                        .split("")
+                                        .reverse()
+                                        .map((number, index) => {
+                                            return (
+                                                index % 3 === 0 &&
+                                                    index !== 0 ?
+                                                    number + "." :
+                                                    number
+                                            )
+                                        })
+                                        .reverse()
+                                        .join("")
+                                    + " €" : ""}
+                                </td>
                             </tr>
                         )
                     })}
             </tbody>
+
         </table>
     )
 }

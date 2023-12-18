@@ -1,6 +1,10 @@
-/* xs */
-@media (min-width: 360px) {}
+@media (max-height: 725px) {
+    #filterPosition {
+        position: relative;
+    }
+}
 
+/* xs */
 @media (min-width: 475px) {
 
     #app {
@@ -8,19 +12,19 @@
     }
 
     h1 {
-        font-size: 2.7em;
+        font-size: 2.6em;
         margin-bottom: 30px;
     }
 
     .navBtn {
-        font-size: 2.1em;
+        font-size: 2em;
     }
 
     caption {
         font-size: 1.4em;
     }
 
-    #persistDataBtn {
+    .dataBtn {
         font-size: 1.1em;
     }
 
@@ -74,7 +78,7 @@
     }
 
     #wideTable {
-        display: block;
+        display: table;
     }
 
     #formBtnBox div {
@@ -91,16 +95,61 @@
         height: 140px;
         width: 100%;
     }
+
+    .filterInput {
+        width: 300px;
+    }
+
+    .rangeBox input {
+        width: 125px;
+    }
+
+    .dataBtn {
+        font-size: 1.2em;
+    }
 }
 
 /* md */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+    #wideTable {
+        max-width: 700px;
+    }
+
+    #wideTable th:first-of-type,
+    #wideTable td:first-of-type {
+        padding-left: 20px;
+    }
+
+    #wideTable th:last-of-type,
+    #wideTable td:last-of-type {
+        padding-right: 20px;
+    }
+
+    #wideTable th,
+    #wideTable td {
+        font-size: 1.2em;
+    }
+}
 
 /* lg */
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    #wideTable {
+        max-width: 750px;
+    }
+}
 
 /* xl */
-@media (min-width: 1280px) {}
+@media (min-width: 1280px) {
+
+    #wideTable th,
+    #wideTable td {
+        font-size: 1.3em;
+    }
+
+    #explainBox p {
+        font-size: 1.6em;
+    }
+}
 
 /* 2xl */
 @media (min-width: 1536px) {}
