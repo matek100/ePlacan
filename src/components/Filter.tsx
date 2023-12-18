@@ -203,23 +203,24 @@ export default function Filter() {
                         "Uporabi celotni seznam"}
                 </button>
 
-                <button
-                    class={"dataBtn"}
-                    onClick={() => remoteDataType("schoolTier")}>
-                    {!removedData[filter] ?
-                        `Izloči iz seznama${filter === "school" ? " stopnjo" : ""}` :
-                        `Dodaj v seznam${filter === "school" ? " stopnjo" : ""}`}
-                </button>
-
                 {filter === "school" ?
                     <button
                         class={"dataBtn"}
-                        onClick={() => remoteDataType(filter)}>
+                        onClick={() => remoteDataType("schoolTier")}>
                         {!removedData[filter] ?
-                            "Izloči iz seznama šolo" :
-                            "Dodaj v seznam šolo"}
+                            `Izloči iz seznama stopnjo` :
+                            `Dodaj v seznam stopnjo`
+                        }
                     </button> :
                     <></>}
+
+                <button
+                    class={"dataBtn"}
+                    onClick={() => remoteDataType(filter)}>
+                    {!removedData[filter] ?
+                        `Izloči iz seznama${!removedData[filter] ? " šolo" : ""}` :
+                        `Dodaj v seznam${!removedData[filter] ? " šolo" : ""}`}
+                </button>
 
                 <button
                     id="filterResetBtn"
