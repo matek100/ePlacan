@@ -105,8 +105,8 @@ export default function Form(
                     class={"formInput colFlex"}
                     style={
                         educationTier &&
-                            educationTier !== "1. bolonska" &&
-                            educationTier !== "2. bolonska" ?
+                            educationTier !== "1. Nedokončana OŠ" &&
+                            educationTier !== "2. Osnovna šola" ?
                             { visibility: "visible" } :
                             { visibility: "hidden", position: "absolute" }
                     }>

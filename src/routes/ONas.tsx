@@ -33,13 +33,16 @@ export default function ONas() {
         <section
             id="promoBox"
             class={"flex"}>
-            <a class={"colFlex"}>
+            <a
+                class={"colFlex"}
+                tabIndex={0}>
                 <img
                     class="logo"
                     src="ePlacan_Logo.png"
                     alt="ePlačan Logo" />
             </a>
             <a class={"colFlex"}
+                tabIndex={0}
                 href={"https://piratskastranka.si"}
                 target={"_blanc"}>
                 <img
@@ -48,6 +51,8 @@ export default function ONas() {
                     alt="Piratska stranka Logo" />
             </a>
         </section>
+
+        {/*V ePlačan gumb dodaj funkcijo, naj predvaja kdo je sodeloval v projektu.*/}
 
         <section
             style={{

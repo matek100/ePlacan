@@ -20,11 +20,11 @@ export default function useForm() {
     const schoolsByTier = [
         {
             tier: 1,
-            list: ["osnovna šola"]
+            list: ["brez"]
         },
         {
             tier: 2,
-            list: ["nižje poklicno"]
+            list: ["osnovna šola"]
         },
         {
             tier: 3,
@@ -72,9 +72,11 @@ export default function useForm() {
 
     const formalize = (arr: any, drop1: string, drop2: string) => {
         const schoolTierNumber = Number(drop1[0]);
-        const schoolCorrected = schoolTierNumber === 1 ?
+        const schoolCorrected = schoolTierNumber === 2 ?
             "Osnovna šola" :
-            drop2;
+            schoolTierNumber === 1 ?
+                "Nedokončana OŠ" :
+                drop2;
 
         const payRaw: number = arr["pay-input"].value;
         const payProcessed = payRaw.toString().split("");
@@ -122,12 +124,9 @@ export default function useForm() {
         }
     }
 
-    {/*FORMA NAJ SE NA KONCU USPEŠNEGA PROCESA ZAPRE, DA PREPREČIŠ SAMOZAKLEP*/ }
-
     const checkFormSubmitions = (
         formSubmitFunc: (newState: boolean) => void
     ) => {
-        {/*SPREMENI NA 5 OB ZAKLJUČKU PROJEKTA*/ }
         formSubmitedTimes < 6 ?
             formSubmitFunc(true) :
             toast("Na isti napravi je dovoljenih največ 5 uspešnih oddaj, zato je nova forma blokirana. Morda poskusite menjati napravo.")
