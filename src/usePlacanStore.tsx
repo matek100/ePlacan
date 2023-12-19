@@ -18,6 +18,10 @@ type State = {
     formSubmitedTimes: number,
     loc: string,
     removedData: RemoveData,
+    dropDowns: {
+        school: boolean,
+        schoolTier: boolean
+    },
 }
 
 type Action = {
@@ -27,6 +31,10 @@ type Action = {
     updateFormSubmitedTimes(newState: number): void,
     setLoc(newState: string): void,
     setRemovedData(newState: RemoveData): void,
+    setDropDownsOpen(newState: {
+        school: boolean,
+        schoolTier: boolean
+    }): void,
 }
 
 const usePlacanStore = create<State & Action>(set => ({
@@ -67,6 +75,14 @@ const usePlacanStore = create<State & Action>(set => ({
     },
     setRemovedData: (newState) => set(() => ({
         removedData: newState
+    })),
+
+    dropDowns: {
+        school: false,
+        schoolTier: false
+    },
+    setDropDownsOpen: (newState) => set(() => ({
+        dropDowns: newState
     })),
 }))
 

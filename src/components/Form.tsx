@@ -1,3 +1,4 @@
+import usePlacanStore from "../usePlacanStore";
 import SelectRadio from "../utils/SelectRadio"
 import useForm from "../utils/useForm";
 import "./form.css";
@@ -8,6 +9,11 @@ export default function Form(
         setOpen(newState: boolean): void
     }
 ) {
+
+    const {
+        dropDowns,
+        setDropDownsOpen
+    } = usePlacanStore();
 
     const {
         schoolTier,
@@ -97,7 +103,9 @@ export default function Form(
                         name="schoolTier"
                         describe="Stopnja izobrazbe"
                         selection={schoolTier}
-                        onClickFunction={setEducationTier}
+                        onClickOpen={dropDowns}
+                        onClickOpenFunc={setDropDownsOpen}
+                        onClickFunc={setEducationTier}
                     />
                 </label>
 
@@ -117,6 +125,8 @@ export default function Form(
                         name="school"
                         describe="Vrsta programa"
                         selection={getSchoolPrograms()}
+                        onClickOpen={dropDowns}
+                        onClickOpenFunc={setDropDownsOpen}
                     />
                 </label>
 
