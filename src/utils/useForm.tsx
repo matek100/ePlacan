@@ -6,13 +6,15 @@ import toast from "react-hot-toast";
 export default function useForm() {
 
     const schoolTier = [
-        "1. bolonska",
-        "2. bolonska",
-        "3. bolonska",
-        "4. bolonska",
-        "5. bolonska",
-        "6. bolonska",
-        "7. bolonska",
+        "1. Nedokončana OŠ",
+        "2. Osnovna šola",
+        "3. Nižje-poklicno",
+        "4. Srednje-poklicno",
+        "5. Gimnazijsko / Strokovno",
+        "6. Višješolski program",
+        "7. Univerzitetno / Strokovno",
+        "8.1 Magistrski program",
+        "8.2 Doktorski program",
     ]
 
     const schoolsByTier = [
@@ -30,7 +32,7 @@ export default function useForm() {
         },
         {
             tier: 4,
-            list: ["gimnazija"]
+            list: ["gimnazija", "dsadasddssds", "dsadasdsaad"]
         },
         {
             tier: 5,
@@ -57,12 +59,13 @@ export default function useForm() {
 
     const getSchoolPrograms = () => {
         switch (educationTier) {
-            case "2. bolonska": return schoolsByTier[2].list;
-            case "3. bolonska": return schoolsByTier[3].list;
-            case "4. bolonska": return schoolsByTier[4].list;
-            case "5. bolonska": return schoolsByTier[5].list;
-            case "6. bolonska": return schoolsByTier[6].list;
-            case "7. bolonska": return schoolsByTier[7].list;
+            case "3. Nižje-poklicno": return schoolsByTier[2].list;
+            case "4. Srednje-poklicno": return schoolsByTier[3].list;
+            case "5. Gimnazijsko / Strokovno": return schoolsByTier[4].list;
+            case "6. Višješolski program": return schoolsByTier[5].list;
+            case "7. Univerzitetno / Strokovno": return schoolsByTier[6].list;
+            case "8.1 Magistrski program": return schoolsByTier[7].list;
+            case "8.2 Doktorski program": return schoolsByTier[8].list;
             default: return [];
         }
     }

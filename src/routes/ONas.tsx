@@ -15,9 +15,8 @@ export default function ONas() {
                 Piratski program
             </h1>
             <Link
-                class={"navBtn"}
                 href="/">
-                ePlačan
+                <button class={"navBtn"}>ePlačan</button>
             </Link>
         </nav>
 

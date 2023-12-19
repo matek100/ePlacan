@@ -32,7 +32,7 @@
     text-align: center;
     margin-bottom: 5px;
     border: 0px;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
     padding: 0.3em 0 0.4em;
     background-color: transparent;
     outline: none;
@@ -40,7 +40,7 @@
 
 .formInputField:hover,
 .formInputField:focus {
-    border-bottom: 3px solid rgba(0, 0, 0, 1);
+    border-bottom: 4px solid rgba(0, 0, 0, 1);
 }
 
 #formBtnBox {
@@ -74,15 +74,19 @@
 .selector {
     position: relative;
     justify-content: center;
-    color: white;
+    width: 100%;
+    color: rgb(225, 225, 225);
     text-align: center;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
-    padding: 0.3em 0 0.4em;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    padding: 0.4em 0 0.5em;
+    background-color: transparent;
     z-index: 0;
 }
 
 .selector:hover {
-    border-bottom: 3px solid rgba(0, 0, 0, 1);
+    border: 1px solid transparent;
+    border-bottom: 4px solid rgba(0, 0, 0, 1);
 }
 
 .formArrow {
@@ -96,7 +100,7 @@
     position: absolute;
     top: 100%;
     width: calc(100% - 20px);
-    color: white;
+    color: rgb(225, 225, 225);
     text-align: center;
     margin-top: 3px;
     border-radius: 0 0 10px 10px;
@@ -113,7 +117,7 @@
 }
 
 .option {
-    margin: 10px;
+    padding: 0.6em;
     transition: 0.2s;
 }
 
@@ -122,5 +126,5 @@
 }
 
 .option:nth-of-type(1):hover {
-    color: white;
+    color: rgb(225, 225, 225);
 }

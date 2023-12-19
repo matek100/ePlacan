@@ -13,9 +13,8 @@ export default function EPlacan() {
         <nav class={"nav colFlex"}>
             <h1 class={"defMouse"}>ePlačan</h1>
             <Link
-                class={"navBtn"}
                 href="/piratska-stranka">
-                Piratski program
+                <button class={"navBtn"}>Piratski program</button>
             </Link>
         </nav>
 

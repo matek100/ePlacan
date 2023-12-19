@@ -26,6 +26,7 @@ export default function Form(
         </button>
     ) :
         (<>
+
             <form
                 id="form"
                 class={"colFlex"}
@@ -143,12 +144,12 @@ export default function Form(
                     <div>
                         <a
                             class={"colFlex"}
-                            href={"https://www.nlb.si/menjalnica/"}
+                            href={"https://www.iban.si/currency-converter?from_currency=USD&to_currency=EUR&amount=1"}
                             target="_blank">
                             <button
                                 type={"button"}
                                 class={"linkToOutside"}>
-                                Link do pretvornika valut na NLB.si
+                                Link do pretvornika valut na IBAN.si
                             </button>
                         </a>
                         <a

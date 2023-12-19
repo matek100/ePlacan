@@ -35,13 +35,14 @@ export default function SelectRadio(
 
         <div class={"select-box"}>
 
-            <div
+            <button
                 id={name + "Selected"}
                 class={"selector flex actMouse"}
+                type={"button"}
                 onClick={() => disableTillClicked()}>
                 {selected ? selected : describe}
                 <ArrowUp id={name + "Arrow"} group="formArrow" up={!open} />
-            </div>
+            </button>
 
             <div
                 id={name + "Id"}
@@ -74,7 +75,15 @@ export default function SelectRadio(
                 </label>
                 {selection.map((option) => {
                     return (
-                        <label class={"option block actMouse"}>
+                        <label
+                            class={"option block actMouse"}
+                            tabIndex={0}
+                            onKeyUp={(e) => {
+                                if (e.code === "Enter") {
+                                    setSelected(option)
+                                    disableTillClicked()
+                                }
+                            }}>
                             <input
                                 checked={selected === option ? true : false}
                                 name={name}
