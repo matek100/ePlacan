@@ -30,7 +30,7 @@ export default function LongTable() {
                                     <td
                                         class={"filterOpenBtn infoCell actMouse"}
                                         onClick={() => setFilter("job")}>
-                                        Naziv
+                                        Delo
                                     </td>
                                     <td class={"infoCell"}>
                                         {!removedData["job"] ? info.job : ""}
