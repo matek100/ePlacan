@@ -12,7 +12,7 @@ export default function useForm() {
         "4. Srednje-poklicno",
         "5. Gimnazijsko / Strokovno",
         "6.1 Višješolski program",
-        "6.2 Višješolski program",
+        "6.2 Visokošolski program",
         "7. Univerzitetno / Strokovno",
         "8.1 Magistrski program",
         "8.2 Doktorski program",
