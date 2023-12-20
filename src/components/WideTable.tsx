@@ -53,7 +53,7 @@ export default function WideTable() {
                                 <td>{!removedData["hours"] ? info.hours + " ur" : ""}</td>
                                 <td>
                                     {!removedData["schoolTier"] ? <span class={"block"}>
-                                        {info.schoolTier + ". st"}
+                                        {info.schoolTier + ". stopnja"}
                                     </span> : <></>}
                                     {!removedData["school"] ? <span class={"block"}>
                                         {info.school}

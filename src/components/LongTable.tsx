@@ -76,7 +76,7 @@ export default function LongTable() {
                                     <td class={"infoCell"}>
                                         {!removedData["schoolTier"] ?
                                             <span class={"block"}>
-                                                {info.schoolTier + ". bol"}
+                                                {info.schoolTier + ". stopnja"}
                                             </span> :
                                             <></>}
                                         {!removedData["school"] ?
