@@ -11,7 +11,8 @@ export default function useForm() {
         "3. Nižje-poklicno",
         "4. Srednje-poklicno",
         "5. Gimnazijsko / Strokovno",
-        "6. Višješolski program",
+        "6.1 Višješolski program",
+        "6.2 Višješolski program",
         "7. Univerzitetno / Strokovno",
         "8.1 Magistrski program",
         "8.2 Doktorski program",
@@ -62,7 +63,8 @@ export default function useForm() {
             case "3. Nižje-poklicno": return schoolsByTier[2].list;
             case "4. Srednje-poklicno": return schoolsByTier[3].list;
             case "5. Gimnazijsko / Strokovno": return schoolsByTier[4].list;
-            case "6. Višješolski program": return schoolsByTier[5].list;
+            case "6.1 Višješolski program": return schoolsByTier[5].list;
+            case "6.2 Visokošolski program": return schoolsByTier[5].list;
             case "7. Univerzitetno / Strokovno": return schoolsByTier[6].list;
             case "8.1 Magistrski program": return schoolsByTier[7].list;
             case "8.2 Doktorski program": return schoolsByTier[8].list;
