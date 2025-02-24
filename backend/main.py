@@ -12,7 +12,7 @@ import os
 import enum
 
 # Load environment variables
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@db_host/db_name")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Setup DB
 engine = create_engine(DATABASE_URL)
