@@ -7,6 +7,7 @@ import io
 from fastapi.responses import StreamingResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
+from fastapi.middleware.cors import CORSMiddleware
 import os
 import enum
 
@@ -23,6 +24,15 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
 app.state.limiter = limiter
 app.add_exception_handler(429, _rate_limit_exceeded_handler)
+
+#CORSM
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["e-placan.vercel.app"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Define Enum for Education Level
 class EducationLevel(enum.Enum):
@@ -53,6 +63,7 @@ def get_db():
         yield db
     finally:
         db.close()
+
 
 # Validate input
 def validate_entry(entry: SalaryEntry):
