@@ -10,6 +10,7 @@ from slowapi.util import get_remote_address
 from fastapi.middleware.cors import CORSMiddleware
 import os
 import enum
+from pydantic import BaseModel
 
 # Load environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -25,7 +26,7 @@ app = FastAPI()
 app.state.limiter = limiter
 app.add_exception_handler(429, _rate_limit_exceeded_handler)
 
-#CORSM
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["e-placan.vercel.app"],  
@@ -42,19 +43,29 @@ class EducationLevel(enum.Enum):
     DOCTORATE = "Doctorate"
     OTHER = "Other"
 
-# Define Salary Model
+# Define Salary Model (SQLAlchemy)
 class SalaryEntry(Base):
     __tablename__ = "salaries"
     id = Column(Integer, primary_key=True, index=True)
-    job = Column(String, index=True)
-    hours_per_week = Column(Float)
-    experience_years = Column(Integer)
-    education_level = Column(SQLEnum(EducationLevel))
-    education_field = Column(String)
-    monthly_salary = Column(Float)
+    job = Column(String, index=True, nullable=False)
+    hours_per_week = Column(Float, nullable=False)
+    experience_years = Column(Integer, nullable=False)
+    education_level = Column(SQLEnum(EducationLevel), nullable=False)
+    education_field = Column(String, nullable=False)
+    monthly_salary = Column(Float, nullable=False)
     date_added = Column(DateTime, default=datetime.utcnow)
 
+# Create all tables
 Base.metadata.create_all(bind=engine)
+
+# Pydantic model for salary entry
+class SalaryEntryCreate(BaseModel):
+    job: str
+    hours_per_week: float
+    experience_years: int
+    education_level: EducationLevel
+    education_field: str
+    monthly_salary: float
 
 # Dependency to get DB session
 def get_db():
@@ -64,25 +75,30 @@ def get_db():
     finally:
         db.close()
 
-
 # Validate input
-def validate_entry(entry: SalaryEntry):
+def validate_entry(entry: SalaryEntryCreate):
     if not entry.job or not entry.education_field:
         raise HTTPException(status_code=400, detail="Job and Education Field are required.")
     if entry.hours_per_week <= 0 or entry.monthly_salary <= 0:
         raise HTTPException(status_code=400, detail="Hours per week and salary must be positive numbers.")
     if entry.experience_years < 0:
         raise HTTPException(status_code=400, detail="Experience years cannot be negative.")
-    if entry.education_level not in EducationLevel:
-        raise HTTPException(status_code=400, detail="Invalid education level.")
 
 # API to add a salary entry
 @app.post("/add")
 @limiter.limit("3/minute")  # Prevent spam (max 3 per minute per IP)
-def add_salary(request: Request, entry: SalaryEntry, db=Depends(get_db)):
+def add_salary(request: Request, entry: SalaryEntryCreate, db: Session = Depends(get_db)):
     try:
         validate_entry(entry)
-        db.add(entry)
+        salary_entry = SalaryEntry(
+            job=entry.job,
+            hours_per_week=entry.hours_per_week,
+            experience_years=entry.experience_years,
+            education_level=entry.education_level,
+            education_field=entry.education_field,
+            monthly_salary=entry.monthly_salary
+        )
+        db.add(salary_entry)
         db.commit()
         return {"message": "Entry added successfully"}
     except Exception as e:
@@ -91,7 +107,7 @@ def add_salary(request: Request, entry: SalaryEntry, db=Depends(get_db)):
 
 # API to fetch last 50 salary entries
 @app.get("/salaries/last50")
-def get_last_50_salaries(db=Depends(get_db)):
+def get_last_50_salaries(db: Session = Depends(get_db)):
     try:
         return db.query(SalaryEntry).order_by(SalaryEntry.date_added.desc()).limit(50).all()
     except Exception as e:
@@ -99,7 +115,7 @@ def get_last_50_salaries(db=Depends(get_db)):
 
 # API to fetch all salary entries
 @app.get("/salaries/all")
-def get_all_salaries(db=Depends(get_db)):
+def get_all_salaries(db: Session = Depends(get_db)):
     try:
         return db.query(SalaryEntry).all()
     except Exception as e:
@@ -107,7 +123,7 @@ def get_all_salaries(db=Depends(get_db)):
 
 # API to fetch salary data based on SQL query received from frontend
 @app.post("/salaries/query")
-def get_salaries_by_query(sql_query: str, db=Depends(get_db)):
+def get_salaries_by_query(sql_query: str, db: Session = Depends(get_db)):
     try:
         result = db.execute(text(sql_query)).fetchall()
         return result
@@ -116,7 +132,7 @@ def get_salaries_by_query(sql_query: str, db=Depends(get_db)):
 
 # Export as CSV
 @app.get("/export")
-def export_data(db=Depends(get_db)):
+def export_data(db: Session = Depends(get_db)):
     try:
         entries = db.query(SalaryEntry).all()
         output = io.StringIO()
