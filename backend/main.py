@@ -79,7 +79,7 @@ def validate_entry(entry: SalaryEntry):
 # API to add a salary entry
 @app.post("/add")
 @limiter.limit("3/minute")  # Prevent spam (max 3 per minute per IP)
-def add_salary(entry: SalaryEntry, db=Depends(get_db)):
+def add_salary(request: Request, entry: SalaryEntry, db=Depends(get_db)):
     try:
         validate_entry(entry)
         db.add(entry)
